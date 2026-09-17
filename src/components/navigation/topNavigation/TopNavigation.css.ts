@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css'
 
-export const headerContainer = style({
+export const topNavigationContainer = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -8,14 +8,14 @@ export const headerContainer = style({
   padding: '20px',
 })
 
-export const headerTitle = style({
+export const topNavigationTitle = style({
   color: '#FFFFFF',
   fontSize: '20px',
   fontWeight: '500',
   margin: '0 0 10px',
 })
 
-export const headerSubtitle = style({
+export const topNavigationSubtitle = style({
   color: '#E1F5EE',
   fontSize: '16px',
   fontWeight: '400',

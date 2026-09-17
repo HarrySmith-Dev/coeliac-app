@@ -1,6 +1,6 @@
 import { globalStyle } from '@vanilla-extract/css'
 
-globalStyle('html, body, #main', {
+globalStyle('html, body, #root', {
   height: '100%',
   scrollBehavior: 'smooth',
 })
