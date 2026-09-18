@@ -1,11 +1,24 @@
 import { style } from '@vanilla-extract/css'
+import { desktopBreakpoint } from '../../../styles/global.css'
 
 export const topNavigationContainer = style({
+  backgroundColor: '#0F6E56',
+  padding: '20px',
+  width: '100%',
+})
+
+export const topNavigationContentContainer = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  backgroundColor: '#0F6E56',
-  padding: '20px',
+
+  '@media': {
+    [desktopBreakpoint]: {
+      flexDirection: 'row',
+      gap: '150px',
+      boxSizing: 'border-box',
+    },
+  },
 })
 
 export const topNavigationTitle = style({
@@ -14,6 +27,13 @@ export const topNavigationTitle = style({
   fontSize: '20px',
   fontWeight: '500',
   margin: '0 0 10px',
+
+  '@media': {
+    [desktopBreakpoint]: {
+      fontSize: '24px',
+      margin: '0 0 0 60px',
+    },
+  },
 })
 
 export const topNavigationSubtitle = style({
@@ -21,4 +41,41 @@ export const topNavigationSubtitle = style({
   fontSize: '16px',
   margin: '0',
   fontFamily: "'Inter', sans-serif",
+
+  '@media': {
+    [desktopBreakpoint]: {
+      display: 'none',
+    },
+  },
+})
+
+export const topNavigationLinkList = style({
+  display: 'none',
+
+  '@media': {
+    [desktopBreakpoint]: {
+      listStyle: 'none',
+      display: 'flex',
+      gap: '60px',
+      padding: '0',
+      margin: '0',
+    },
+  },
+})
+
+export const topNavigationLink = style({
+  color: '#FFFFFF',
+  textDecoration: 'none',
+  fontFamily: "'Inter', sans-serif",
+  fontSize: '16px',
+
+  ':hover': {
+    color: '#E1F5EE',
+  },
+
+  '@media': {
+    [desktopBreakpoint]: {
+      fontSize: '18px',
+    },
+  },
 })
