@@ -6,11 +6,12 @@ export const mapCardLink = style({
   textDecoration: 'none',
   fontFamily: "'Inter', serif",
   fontSize: '14px',
-  marginBottom: '15px',
 })
 
 export const mapCardContainer = style({
   minWidth: 0,
+  backgroundColor: '#FFFFFF',
+  border: '1px solid #CFCBB8',
 
   '@media': {
     [desktopBreakpoint]: {

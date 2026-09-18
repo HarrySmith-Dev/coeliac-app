@@ -43,4 +43,9 @@ export const bottomNavigationItemIcon = style({
   width: '24px',
   height: '24px',
   marginBottom: '5px',
+  display: 'block',
+  backgroundColor: 'currentColor',
+  maskRepeat: 'no-repeat',
+  maskPosition: 'center',
+  maskSize: 'contain',
 })

@@ -1,6 +1,8 @@
+import { NavLink } from 'react-router-dom'
 import {
   topNavigationContainer,
   topNavigationContentContainer,
+  topNavigationItemActive,
   topNavigationLink,
   topNavigationLinkList,
   topNavigationSubtitle,
@@ -36,9 +38,15 @@ const TopNavigation = () => {
         <ul className={topNavigationLinkList}>
           {navLinks.map((link) => (
             <li key={link.path}>
-              <a href={link.path} className={topNavigationLink}>
+              <NavLink
+                to={link.path}
+                end={link.path === '/'}
+                className={({ isActive }) =>
+                  `${topNavigationLink} ${isActive && topNavigationItemActive}`
+                }
+              >
                 {link.label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>

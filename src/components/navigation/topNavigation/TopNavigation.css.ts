@@ -3,8 +3,13 @@ import { desktopBreakpoint } from '../../../styles/global.css'
 
 export const topNavigationContainer = style({
   backgroundColor: '#0F6E56',
-  padding: '20px',
-  width: '100%',
+  padding: '18px',
+
+  '@media': {
+    [desktopBreakpoint]: {
+      padding: '30px',
+    },
+  },
 })
 
 export const topNavigationContentContainer = style({
@@ -70,7 +75,7 @@ export const topNavigationLink = style({
   fontSize: '16px',
 
   ':hover': {
-    color: '#E1F5EE',
+    color: '#D85A30',
   },
 
   '@media': {
@@ -78,4 +83,8 @@ export const topNavigationLink = style({
       fontSize: '18px',
     },
   },
+})
+
+export const topNavigationItemActive = style({
+  color: '#D85A30',
 })

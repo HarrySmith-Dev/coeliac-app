@@ -10,13 +10,13 @@ import aboutIcon from '../../../assets/aboutIcon.svg'
 import homeIcon from '../../../assets/homeIcon.svg'
 import mapIcon from '../../../assets/mapIcon.svg'
 
-type NavLink = {
+type NavLinkProps = {
   label: string
   path: string
   icon: string
 }
 
-const navLinks: NavLink[] = [
+const navLinks: NavLinkProps[] = [
   {
     label: 'Home',
     path: '/',
@@ -47,7 +47,11 @@ const BottomNavigation = () => {
                 `${bottomNavigationItemLink} ${isActive && bottomNavigationItemActive}`
               }
             >
-              <img src={link.icon} alt={link.label} className={bottomNavigationItemIcon} />
+              <span
+                aria-hidden="true"
+                className={bottomNavigationItemIcon}
+                style={{ maskImage: `url("${link.icon}")` }}
+              />
               <span>{link.label}</span>
             </NavLink>
           </li>

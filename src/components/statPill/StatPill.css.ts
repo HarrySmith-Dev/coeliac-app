@@ -3,8 +3,7 @@ import { desktopBreakpoint } from '../../styles/global.css'
 
 export const statPillContainer = style({
   borderRadius: '15px',
-  border: '1px solid #CFCBB8',
-  padding: '8px',
+  padding: '10px',
   display: 'flex',
   flexDirection: 'column',
   flex: 1,

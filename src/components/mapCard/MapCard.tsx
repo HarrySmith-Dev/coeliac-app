@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { CircleMarker, MapContainer, TileLayer, useMap } from 'react-leaflet'
-import { cardContainer, cardContent } from '../../styles/shared.css'
+import { cardContainer } from '../../styles/shared.css'
 import { mapCardContainer, mapCardLink, mapCardMap } from './MapCard.css'
 
 export type MapLocation = [number, number]
@@ -26,24 +26,22 @@ const MapLocationUpdater = ({ location }: { location: MapLocation | null }) => {
 const MapCard = ({ userLocation }: MapCardProps) => {
   return (
     <article className={`${cardContainer} ${mapCardContainer}`}>
-      <div className={cardContent}>
-        <a
-          href="https://www.openstreetmap.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={mapCardLink}
-        >
-          View full map
-        </a>
-        <MapContainer className={mapCardMap} center={userLocation ?? defaultLocation} zoom={13}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <MapLocationUpdater location={userLocation ?? null} />
-          {userLocation && <CircleMarker center={userLocation} radius={8} />}
-        </MapContainer>
-      </div>
+      <a
+        href="https://www.openstreetmap.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={mapCardLink}
+      >
+        View full map
+      </a>
+      <MapContainer className={mapCardMap} center={userLocation ?? defaultLocation} zoom={13}>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <MapLocationUpdater location={userLocation ?? null} />
+        {userLocation && <CircleMarker center={userLocation} radius={8} />}
+      </MapContainer>
     </article>
   )
 }
