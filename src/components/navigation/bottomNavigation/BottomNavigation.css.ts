@@ -8,6 +8,7 @@ export const bottomNavigationContainer = style({
   width: '100%',
   borderTop: '1px solid #CFCBB8',
   padding: '10px',
+  zIndex: 1000,
 
   '@media': {
     [tabletBreakpoint]: {
@@ -31,6 +32,7 @@ export const bottomNavigationItemLink = style({
   cursor: 'pointer',
   textDecoration: 'none',
   color: '#2C2C2A',
+  fontFamily: "'Inter', sans-serif",
 })
 
 export const bottomNavigationItemActive = style({

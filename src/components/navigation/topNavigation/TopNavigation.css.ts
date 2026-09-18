@@ -10,6 +10,7 @@ export const topNavigationContainer = style({
 
 export const topNavigationTitle = style({
   color: '#FFFFFF',
+  fontFamily: "'Fraunces', serif",
   fontSize: '20px',
   fontWeight: '500',
   margin: '0 0 10px',
@@ -18,6 +19,6 @@ export const topNavigationTitle = style({
 export const topNavigationSubtitle = style({
   color: '#E1F5EE',
   fontSize: '16px',
-  fontWeight: '400',
   margin: '0',
+  fontFamily: "'Inter', sans-serif",
 })
