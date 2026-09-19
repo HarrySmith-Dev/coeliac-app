@@ -5,7 +5,7 @@ import type { MapLocation } from './components/mapCard/MapCard'
 import type { LocationCoordinates } from './components/nearMeButton/NearMeButton'
 import { Route, Routes } from 'react-router-dom'
 import About from './pages/About'
-import Home from './pages/Home'
+import Home from './pages/home/Home'
 import Map from './pages/Map'
 
 function App() {
@@ -39,10 +39,7 @@ function App() {
           path="/"
           element={<Home userLocation={userLocation} onLocationFound={handleLocationFound} />}
         />
-        <Route
-          path="/about"
-          element={<About userLocation={userLocation} onLocationFound={handleLocationFound} />}
-        />
+        <Route path="/about" element={<About />} />
         <Route path="/map" element={<Map userLocation={userLocation} />} />
       </Routes>
       <BottomNavigation />

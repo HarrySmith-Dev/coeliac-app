@@ -13,6 +13,16 @@ export const pageLayout = style({
 
     [desktopBreakpoint]: {
       padding: '40px 80px 100px',
+    },
+  },
+})
+
+export const rowContainer = style({
+  display: 'flex',
+  flexDirection: 'column',
+
+  '@media': {
+    [desktopBreakpoint]: {
       flexDirection: 'row',
     },
   },
@@ -20,7 +30,7 @@ export const pageLayout = style({
 
 export const cardContainer = style({
   borderRadius: '15px',
-  padding: '15px',
+  padding: '30px',
 })
 
 export const cardStatPillContainer = style({
