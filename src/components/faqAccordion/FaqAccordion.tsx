@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import chevron from '../../assets/chevron.svg'
 import {
   faqAccordionChevronClosed,
@@ -18,46 +18,39 @@ type FaqAccordionProps = {
 
 const FaqAccordion = ({ title, description, listItems }: FaqAccordionProps) => {
   const [isOpen, setIsOpen] = useState(false)
+  const contentId = useId()
 
   const toggleAccordion = () => setIsOpen((isOpen) => !isOpen)
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      toggleAccordion()
-    }
-  }
-
   return (
-    <div
-      className={`${faqAccordionContainer}`}
-      role="button"
-      tabIndex={0}
-      aria-expanded={isOpen}
-      onClick={toggleAccordion}
-      onKeyDown={handleKeyDown}
-    >
-      <div className={faqAccordionHeader}>
-        {title && <h2 className={faqAccordionCardHeading}>{title}</h2>}
-        <img
-          className={isOpen ? faqAccordionChevron : faqAccordionChevronClosed}
-          src={chevron}
-          alt="chevron-icon"
-          aria-hidden="true"
-        />
+    <div className={faqAccordionContainer}>
+      <h2 className={faqAccordionCardHeading}>
+        <button
+          type="button"
+          className={faqAccordionHeader}
+          aria-expanded={isOpen}
+          aria-controls={contentId}
+          onClick={toggleAccordion}
+        >
+          {title}
+          <img
+            className={isOpen ? faqAccordionChevron : faqAccordionChevronClosed}
+            src={chevron}
+            alt=""
+            aria-hidden="true"
+          />
+        </button>
+      </h2>
+      <div id={contentId} className={faqAccordionContent} hidden={!isOpen}>
+        {description && <p className={faqAccordionCardText}>{description}</p>}
+        {listItems && (
+          <ul>
+            {listItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        )}
       </div>
-      {isOpen && (
-        <div className={faqAccordionContent}>
-          {description && <p className={faqAccordionCardText}>{description}</p>}
-          {listItems && (
-            <ul>
-              {listItems.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          )}
-        </div>
-      )}
     </div>
   )
 }

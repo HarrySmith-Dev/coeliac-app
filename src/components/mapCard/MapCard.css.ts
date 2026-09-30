@@ -1,17 +1,18 @@
 import { style } from '@vanilla-extract/css'
 import { desktopBreakpoint } from '../../styles/global.css'
+import { colors, fonts } from '../../styles/tokens'
 
 export const mapCardLink = style({
-  color: '#0F6E56',
+  color: colors.primary,
   textDecoration: 'none',
-  fontFamily: "'Inter', serif",
+  fontFamily: fonts.body,
   fontSize: '14px',
 })
 
 export const mapCardContainer = style({
   minWidth: 0,
-  backgroundColor: '#FFFFFF',
-  border: '1px solid #CFCBB8',
+  backgroundColor: colors.surface,
+  border: `1px solid ${colors.border}`,
 
   '@media': {
     [desktopBreakpoint]: {

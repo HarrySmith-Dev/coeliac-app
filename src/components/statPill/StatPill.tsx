@@ -1,22 +1,16 @@
-import { statPillContainer, statPillHeader, statPillText } from './StatPill.css'
+import { statPillContainer, statPillHeader, statPillText, statPillTone } from './StatPill.css'
 
-type StatPillProps = {
+export type StatPillProps = {
   title: string
   value: string
-  textColor: string
-  headerColor: string
-  backgroundColor: string
+  tone: keyof typeof statPillTone
 }
 
-const StatPill = ({ title, value, backgroundColor, headerColor, textColor }: StatPillProps) => {
+const StatPill = ({ title, value, tone }: StatPillProps) => {
   return (
-    <div className={statPillContainer} style={{ backgroundColor: backgroundColor }}>
-      <h3 className={statPillHeader} style={{ color: headerColor }}>
-        {title}
-      </h3>
-      <p className={statPillText} style={{ color: textColor }}>
-        {value}
-      </p>
+    <div className={`${statPillContainer} ${statPillTone[tone]}`}>
+      <h3 className={statPillHeader}>{title}</h3>
+      <p className={statPillText}>{value}</p>
     </div>
   )
 }

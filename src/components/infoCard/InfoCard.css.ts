@@ -1,10 +1,9 @@
-import { style } from '@vanilla-extract/css'
-import { desktopBreakpoint, tabletBreakpoint } from '../../styles/global.css'
+import { style, styleVariants } from '@vanilla-extract/css'
+import { desktopBreakpoint } from '../../styles/global.css'
+import { bodyText, headingText } from '../../styles/shared.css'
+import { colors } from '../../styles/tokens'
 
 export const infoCardContainer = style({
-  display: 'flex',
-  flexDirection: 'column',
-
   '@media': {
     [desktopBreakpoint]: {
       flex: 1,
@@ -12,64 +11,44 @@ export const infoCardContainer = style({
   },
 })
 
-export const infoCardContent = style({
-  flex: 1,
-})
-
-export const infoCardHeader = style({
-  fontSize: '18px',
-  fontWeight: 'bold',
-  margin: '0 0 15px',
-  color: '#99733E',
-  fontFamily: "'Fraunces', serif",
-
-  '@media': {
-    [tabletBreakpoint]: {
-      fontSize: '20px',
-    },
-    [desktopBreakpoint]: {
-      fontSize: '24px',
-    },
+export const infoCardVariant = styleVariants({
+  outlined: {
+    backgroundColor: colors.surface,
+    border: `1px solid ${colors.border}`,
+  },
+  plain: {
+    backgroundColor: 'transparent',
+    border: 'none',
   },
 })
 
-export const infoCardText = style({
-  fontSize: '16px',
-  margin: '0 0 15px',
-  color: '#2C2C2A',
-  fontFamily: "'Inter', sans-serif",
-
-  '@media': {
-    [tabletBreakpoint]: {
-      fontSize: '18px',
-    },
-    [desktopBreakpoint]: {
-      fontSize: '22px',
-    },
+export const infoCardHeader = style([
+  headingText,
+  {
+    color: colors.gold,
+    margin: '0 0 15px',
   },
-})
+])
+
+export const infoCardText = style([
+  bodyText,
+  {
+    margin: '0 0 15px',
+  },
+])
 
 export const infoCardList = style({
   padding: '0 0 0 20px',
 })
 
-export const infoCardListItem = style({
-  fontSize: '16px',
-  margin: '0 0 15px',
-  color: '#2C2C2A',
-  fontFamily: "'Inter', sans-serif",
+export const infoCardListItem = style([
+  bodyText,
+  {
+    margin: '0 0 15px',
 
-  '::marker': {
-    color: '#0F6E56',
-    fontSize: '20px',
-  },
-
-  '@media': {
-    [tabletBreakpoint]: {
-      fontSize: '18px',
-    },
-    [desktopBreakpoint]: {
-      fontSize: '22px',
+    '::marker': {
+      color: colors.primary,
+      fontSize: '20px',
     },
   },
-})
+])

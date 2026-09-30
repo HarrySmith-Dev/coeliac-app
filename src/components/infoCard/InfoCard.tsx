@@ -1,50 +1,43 @@
+import type { ReactNode } from 'react'
 import { cardContainer } from '../../styles/shared.css'
 import {
-  infoCardList,
   infoCardContainer,
-  infoCardContent,
   infoCardHeader,
+  infoCardList,
   infoCardListItem,
   infoCardText,
+  infoCardVariant,
 } from './InfoCard.css'
-import React from 'react'
 
-export type InfoCardProps = {
+type InfoCardProps = {
   title?: string
-  backgroundColor: string
-  border: string
   description?: string
   listItems?: string[]
-  statsPills?: React.ReactNode
-  nearMeButton?: React.ReactNode
+  variant?: keyof typeof infoCardVariant
+  children?: ReactNode
 }
 
 const InfoCard = ({
   title,
-  backgroundColor,
-  border,
   description,
   listItems,
-  statsPills,
-  nearMeButton,
+  variant = 'outlined',
+  children,
 }: InfoCardProps) => {
   return (
-    <article className={infoCardContainer}>
-      <div style={{ backgroundColor, border }} className={`${cardContainer} ${infoCardContent}`}>
-        {title && <h2 className={infoCardHeader}>{title}</h2>}
-        {description && <p className={infoCardText}>{description}</p>}
-        {listItems && (
-          <ul className={infoCardList}>
-            {listItems.map((item, index) => (
-              <li key={index} className={infoCardListItem}>
-                {item}
-              </li>
-            ))}
-          </ul>
-        )}
-        {statsPills && <div>{statsPills}</div>}
-        {nearMeButton && <div>{nearMeButton}</div>}
-      </div>
+    <article className={`${cardContainer} ${infoCardContainer} ${infoCardVariant[variant]}`}>
+      {title && <h2 className={infoCardHeader}>{title}</h2>}
+      {description && <p className={infoCardText}>{description}</p>}
+      {listItems && (
+        <ul className={infoCardList}>
+          {listItems.map((item) => (
+            <li key={item} className={infoCardListItem}>
+              {item}
+            </li>
+          ))}
+        </ul>
+      )}
+      {children}
     </article>
   )
 }

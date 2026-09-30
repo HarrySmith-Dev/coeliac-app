@@ -1,8 +1,9 @@
 import { style } from '@vanilla-extract/css'
 import { desktopBreakpoint } from '../../../styles/global.css'
+import { colors, fonts } from '../../../styles/tokens'
 
 export const topNavigationContainer = style({
-  backgroundColor: '#0F6E56',
+  backgroundColor: colors.primary,
   padding: '18px',
 
   '@media': {
@@ -27,8 +28,8 @@ export const topNavigationContentContainer = style({
 })
 
 export const topNavigationTitle = style({
-  color: '#FFFFFF',
-  fontFamily: "'Fraunces', serif",
+  color: colors.surface,
+  fontFamily: fonts.heading,
   fontSize: '20px',
   fontWeight: '500',
   margin: '0 0 10px',
@@ -42,10 +43,10 @@ export const topNavigationTitle = style({
 })
 
 export const topNavigationSubtitle = style({
-  color: '#E1F5EE',
+  color: colors.primaryLight,
   fontSize: '16px',
   margin: '0',
-  fontFamily: "'Inter', sans-serif",
+  fontFamily: fonts.body,
 
   '@media': {
     [desktopBreakpoint]: {
@@ -69,13 +70,13 @@ export const topNavigationLinkList = style({
 })
 
 export const topNavigationLink = style({
-  color: '#FFFFFF',
+  color: colors.surface,
   textDecoration: 'none',
-  fontFamily: "'Inter', sans-serif",
+  fontFamily: fonts.body,
   fontSize: '16px',
 
   ':hover': {
-    color: '#D85A30',
+    color: colors.accent,
   },
 
   '@media': {
@@ -86,5 +87,5 @@ export const topNavigationLink = style({
 })
 
 export const topNavigationItemActive = style({
-  color: '#D85A30',
+  color: colors.accent,
 })

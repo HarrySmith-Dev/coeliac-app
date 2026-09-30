@@ -1,17 +1,13 @@
 import { useEffect } from 'react'
 import { CircleMarker, MapContainer, TileLayer, useMap } from 'react-leaflet'
 import { cardContainer } from '../../styles/shared.css'
+import { useUserLocation } from '../../location/LocationContext'
+import type { LocationCoordinates } from '../../location/types'
 import { mapCardContainer, mapCardLink, mapCardMap } from './MapCard.css'
 
-export type MapLocation = [number, number]
+const defaultLocation: LocationCoordinates = [51.505, -0.09]
 
-type MapCardProps = {
-  userLocation?: MapLocation | null
-}
-
-const defaultLocation: MapLocation = [51.505, -0.09]
-
-const MapLocationUpdater = ({ location }: { location: MapLocation | null }) => {
+const MapLocationUpdater = ({ location }: { location: LocationCoordinates | null }) => {
   const map = useMap()
 
   useEffect(() => {
@@ -23,7 +19,9 @@ const MapLocationUpdater = ({ location }: { location: MapLocation | null }) => {
   return null
 }
 
-const MapCard = ({ userLocation }: MapCardProps) => {
+const MapCard = () => {
+  const { userLocation } = useUserLocation()
+
   return (
     <article className={`${cardContainer} ${mapCardContainer}`}>
       <a
@@ -39,7 +37,7 @@ const MapCard = ({ userLocation }: MapCardProps) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <MapLocationUpdater location={userLocation ?? null} />
+        <MapLocationUpdater location={userLocation} />
         {userLocation && <CircleMarker center={userLocation} radius={8} />}
       </MapContainer>
     </article>

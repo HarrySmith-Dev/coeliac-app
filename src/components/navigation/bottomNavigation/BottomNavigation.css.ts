@@ -1,12 +1,13 @@
 import { style } from '@vanilla-extract/css'
 import { tabletBreakpoint } from '../../../styles/global.css'
+import { colors, fonts } from '../../../styles/tokens'
 
 export const bottomNavigationContainer = style({
-  backgroundColor: '#FFFFFF',
+  backgroundColor: colors.surface,
   position: 'fixed',
   bottom: 0,
   width: '100%',
-  borderTop: '1px solid #CFCBB8',
+  borderTop: `1px solid ${colors.border}`,
   padding: '10px',
   zIndex: 1000,
 
@@ -31,12 +32,12 @@ export const bottomNavigationItemLink = style({
   alignItems: 'center',
   cursor: 'pointer',
   textDecoration: 'none',
-  color: '#2C2C2A',
-  fontFamily: "'Inter', sans-serif",
+  color: colors.text,
+  fontFamily: fonts.body,
 })
 
 export const bottomNavigationItemActive = style({
-  color: '#2F6F55',
+  color: colors.primaryActive,
 })
 
 export const bottomNavigationItemIcon = style({

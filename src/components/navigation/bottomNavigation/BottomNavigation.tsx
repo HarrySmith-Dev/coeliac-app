@@ -6,33 +6,7 @@ import {
   bottomNavigationList,
 } from './BottomNavigation.css'
 import { NavLink } from 'react-router-dom'
-import aboutIcon from '../../../assets/aboutIcon.svg'
-import homeIcon from '../../../assets/homeIcon.svg'
-import mapIcon from '../../../assets/mapIcon.svg'
-
-type NavLinkProps = {
-  label: string
-  path: string
-  icon: string
-}
-
-const navLinks: NavLinkProps[] = [
-  {
-    label: 'Home',
-    path: '/',
-    icon: homeIcon,
-  },
-  {
-    label: 'About',
-    path: '/about',
-    icon: aboutIcon,
-  },
-  {
-    label: 'Map',
-    path: '/map',
-    icon: mapIcon,
-  },
-]
+import { navLinks } from '../../../data/navigation'
 
 const BottomNavigation = () => {
   return (
@@ -44,7 +18,7 @@ const BottomNavigation = () => {
               to={link.path}
               end={link.path === '/'}
               className={({ isActive }) =>
-                `${bottomNavigationItemLink} ${isActive && bottomNavigationItemActive}`
+                `${bottomNavigationItemLink} ${isActive ? bottomNavigationItemActive : ''}`
               }
             >
               <span

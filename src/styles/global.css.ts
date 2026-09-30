@@ -1,4 +1,5 @@
 import { globalStyle } from '@vanilla-extract/css'
+import { colors } from './tokens'
 
 globalStyle('html, body, #root', {
   height: '100%',
@@ -8,7 +9,7 @@ globalStyle('html, body, #root', {
 globalStyle('body', {
   margin: 0,
   padding: 0,
-  backgroundColor: '#FBF8F1',
+  backgroundColor: colors.pageBackground,
 })
 
 globalStyle('*, *::before, *::after', {

@@ -1,14 +1,10 @@
-import MapCard, { type MapLocation } from '../components/mapCard/MapCard'
+import MapCard from '../components/mapCard/MapCard'
 import { pageLayout } from '../styles/shared.css'
 
-type MapPageProps = {
-  userLocation: MapLocation | null
-}
-
-const Map = ({ userLocation }: MapPageProps) => {
+const Map = () => {
   return (
     <section className={pageLayout}>
-      <MapCard userLocation={userLocation} />
+      <MapCard />
     </section>
   )
 }

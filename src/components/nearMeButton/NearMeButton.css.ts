@@ -1,22 +1,23 @@
 import { style } from '@vanilla-extract/css'
 import { desktopBreakpoint } from '../../styles/global.css'
+import { colors, fonts } from '../../styles/tokens'
 
 export const nearMeButtonContainer = style({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   padding: '15px',
-  backgroundColor: '#D85A30',
+  backgroundColor: colors.accent,
   border: 'none',
   borderRadius: '15px',
-  color: '#FFFFFF',
+  color: colors.surface,
   fontSize: '18px',
-  fontFamily: "'Fraunces', sans-serif",
+  fontFamily: fonts.heading,
   cursor: 'pointer',
   gap: '10px',
 
   ':hover': {
-    backgroundColor: '#C14D2A',
+    backgroundColor: colors.accentHover,
   },
 
   '@media': {

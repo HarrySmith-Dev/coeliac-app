@@ -1,5 +1,14 @@
-import { style } from '@vanilla-extract/css'
+import { createVar, style, styleVariants } from '@vanilla-extract/css'
 import { desktopBreakpoint } from '../../styles/global.css'
+import { colors, fonts } from '../../styles/tokens'
+
+const headingColor = createVar()
+
+export const statPillGroup = style({
+  display: 'flex',
+  gap: '10px',
+  margin: '0 0 40px',
+})
 
 export const statPillContainer = style({
   borderRadius: '15px',
@@ -7,6 +16,7 @@ export const statPillContainer = style({
   display: 'flex',
   flexDirection: 'column',
   flex: 1,
+  fontFamily: fonts.body,
 
   '@media': {
     [desktopBreakpoint]: {
@@ -15,15 +25,23 @@ export const statPillContainer = style({
   },
 })
 
+export const statPillTone = styleVariants(
+  { green: colors.green, amber: colors.amber },
+  ({ background, heading, text }) => ({
+    backgroundColor: background,
+    color: text,
+    vars: { [headingColor]: heading },
+  }),
+)
+
 export const statPillHeader = style({
+  color: headingColor,
   fontSize: '18px',
   fontWeight: 'bold',
   margin: '0 0 2px',
-  fontFamily: "'Inter', serif",
 })
 
 export const statPillText = style({
   fontSize: '12px',
   margin: '0',
-  fontFamily: "'Inter', serif",
 })

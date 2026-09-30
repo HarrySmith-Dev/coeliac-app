@@ -1,10 +1,10 @@
 import { style } from '@vanilla-extract/css'
-import { desktopBreakpoint, tabletBreakpoint } from '../../styles/global.css'
+import { bodyText, headingText } from '../../styles/shared.css'
+import { colors } from '../../styles/tokens'
 
 export const faqAccordionContainer = style({
-  cursor: 'pointer',
-  border: '1px solid #CFCBB8',
-  backgroundColor: '#FFFFFF',
+  border: `1px solid ${colors.border}`,
+  backgroundColor: colors.surface,
   margin: '20px 0 0',
   borderRadius: '15px',
   padding: '20px',
@@ -16,26 +16,25 @@ export const faqAccordionContainer = style({
 
 export const faqAccordionHeader = style({
   alignItems: 'center',
+  background: 'none',
+  border: 'none',
+  color: 'inherit',
+  cursor: 'pointer',
   display: 'flex',
+  font: 'inherit',
   justifyContent: 'space-between',
+  padding: 0,
+  textAlign: 'left',
+  width: '100%',
 })
 
-export const faqAccordionCardHeading = style({
-  fontSize: '18px',
-  fontWeight: 'bold',
-  margin: '0',
-  color: '#2C2C2A',
-  fontFamily: "'Fraunces', serif",
-
-  '@media': {
-    [tabletBreakpoint]: {
-      fontSize: '20px',
-    },
-    [desktopBreakpoint]: {
-      fontSize: '24px',
-    },
+export const faqAccordionCardHeading = style([
+  headingText,
+  {
+    color: colors.text,
+    margin: '0',
   },
-})
+])
 
 export const faqAccordionChevron = style({
   height: '20px',
@@ -53,18 +52,10 @@ export const faqAccordionContent = style({
   cursor: 'default',
 })
 
-export const faqAccordionCardText = style({
-  fontSize: '16px',
-  margin: '15px 0',
-  color: '#5F5E5A',
-  fontFamily: "'Inter', sans-serif",
-
-  '@media': {
-    [tabletBreakpoint]: {
-      fontSize: '18px',
-    },
-    [desktopBreakpoint]: {
-      fontSize: '22px',
-    },
+export const faqAccordionCardText = style([
+  bodyText,
+  {
+    color: colors.textMuted,
+    margin: '15px 0',
   },
-})
+])

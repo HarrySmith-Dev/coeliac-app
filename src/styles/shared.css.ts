@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css'
 import { desktopBreakpoint, tabletBreakpoint } from './global.css'
+import { colors, fonts } from './tokens'
 
 export const pageLayout = style({
   display: 'flex',
@@ -20,6 +21,7 @@ export const pageLayout = style({
 export const rowContainer = style({
   display: 'flex',
   flexDirection: 'column',
+  gap: '20px',
 
   '@media': {
     [desktopBreakpoint]: {
@@ -33,8 +35,32 @@ export const cardContainer = style({
   padding: '30px',
 })
 
-export const cardStatPillContainer = style({
-  display: 'flex',
-  gap: '10px',
-  margin: '0 0 40px',
+export const headingText = style({
+  fontFamily: fonts.heading,
+  fontSize: '18px',
+  fontWeight: 'bold',
+
+  '@media': {
+    [tabletBreakpoint]: {
+      fontSize: '20px',
+    },
+    [desktopBreakpoint]: {
+      fontSize: '24px',
+    },
+  },
+})
+
+export const bodyText = style({
+  color: colors.text,
+  fontFamily: fonts.body,
+  fontSize: '16px',
+
+  '@media': {
+    [tabletBreakpoint]: {
+      fontSize: '18px',
+    },
+    [desktopBreakpoint]: {
+      fontSize: '22px',
+    },
+  },
 })
