@@ -27,3 +27,95 @@ export const mapCardMap = style({
   borderRadius: '10px',
   overflow: 'hidden',
 })
+
+export const mapCardMapFullPage = style([
+  mapCardMap,
+  {
+    height: '70vh',
+    minHeight: '400px',
+  },
+])
+
+export const mapCardHeader = style({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'baseline',
+  gap: '10px',
+  margin: '0 0 10px',
+})
+
+export const mapCardStatus = style({
+  color: colors.textMuted,
+  fontFamily: fonts.body,
+  fontSize: '14px',
+  margin: 0,
+})
+
+export const mapCardRetry = style({
+  background: 'none',
+  border: 'none',
+  color: colors.primary,
+  cursor: 'pointer',
+  font: 'inherit',
+  padding: 0,
+  textDecoration: 'underline',
+})
+
+export const placePopupName = style({
+  fontFamily: fonts.heading,
+  fontSize: '16px',
+  fontWeight: 'bold',
+  margin: '0 0 4px',
+})
+
+export const placePopupLevel = style({
+  color: colors.primary,
+  fontWeight: 600,
+  margin: '0 0 4px',
+})
+
+export const placePopupDetail = style({
+  color: colors.textMuted,
+  margin: '0 0 4px',
+})
+
+export const placePopupCuisine = style([placePopupDetail, { textTransform: 'capitalize' }])
+
+export const searchAreaControl = style({
+  position: 'absolute',
+  top: '10px',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  zIndex: 1000,
+})
+
+export const searchAreaButton = style({
+  backgroundColor: colors.surface,
+  border: `1px solid ${colors.border}`,
+  borderRadius: '999px',
+  boxShadow: '0 1px 4px rgba(0, 0, 0, 0.2)',
+  color: colors.text,
+  cursor: 'pointer',
+  fontFamily: fonts.body,
+  fontSize: '14px',
+  fontWeight: 600,
+  margin: 0,
+  padding: '8px 16px',
+  whiteSpace: 'nowrap',
+
+  ':hover': {
+    backgroundColor: colors.pageBackground,
+  },
+})
+
+export const searchAreaHint = style([
+  searchAreaButton,
+  {
+    color: colors.textMuted,
+    cursor: 'default',
+
+    ':hover': {
+      backgroundColor: colors.surface,
+    },
+  },
+])

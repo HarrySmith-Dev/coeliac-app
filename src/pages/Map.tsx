@@ -4,7 +4,7 @@ import { pageLayout } from '../styles/shared.css'
 const Map = () => {
   return (
     <section className={pageLayout}>
-      <MapCard />
+      <MapCard fullPage />
     </section>
   )
 }
