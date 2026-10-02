@@ -1,4 +1,4 @@
-import type { LocationCoordinates } from '../location/types'
+import type { LocationCoordinates } from './location'
 
 export type GlutenFreeLevel = 'only' | 'yes'
 

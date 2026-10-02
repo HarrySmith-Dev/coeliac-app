@@ -1,4 +1,4 @@
-import type { StatPillData } from '../components/statPill/OverviewStats'
+import type { StatPillData } from '../components/overviewStats/OverviewStats'
 import type { Faq } from '../types/content'
 import { sources } from './sources'
 

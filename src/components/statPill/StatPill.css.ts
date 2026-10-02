@@ -4,12 +4,6 @@ import { colors, fonts } from '../../styles/tokens'
 
 const headingColor = createVar()
 
-export const statPillGroup = style({
-  display: 'flex',
-  gap: '10px',
-  margin: '0 0 40px',
-})
-
 export const statPillContainer = style({
   borderRadius: '15px',
   padding: '10px',

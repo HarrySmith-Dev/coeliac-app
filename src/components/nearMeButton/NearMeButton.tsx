@@ -1,5 +1,5 @@
 import mapIcon from '../../assets/mapIcon.svg'
-import { useUserLocation } from '../../location/LocationContext'
+import { useUserLocation } from '../../hooks/useUserLocation'
 import { nearMeButtonContainer, nearMeButtonDesktop, nearMeButtonIcon } from './NearMeButton.css'
 
 type NearMeButtonProps = {

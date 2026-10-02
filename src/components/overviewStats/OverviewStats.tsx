@@ -1,5 +1,5 @@
-import StatPill, { type StatPillProps } from './StatPill'
-import { statPillGroup } from './StatPill.css'
+import StatPill, { type StatPillProps } from '../statPill/StatPill'
+import { overviewStats } from './OverviewStats.css'
 
 export type StatPillData = StatPillProps & { id: string }
 
@@ -9,7 +9,7 @@ type OverviewStatsProps = {
 
 const OverviewStats = ({ stats }: OverviewStatsProps) => {
   return (
-    <div className={statPillGroup}>
+    <div className={overviewStats}>
       {stats.map(({ id, ...stat }) => (
         <StatPill key={id} {...stat} />
       ))}
