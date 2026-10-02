@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css'
-import { bodyText, headingText } from '../../styles/shared.css'
-import { colors, fonts } from '../../styles/tokens'
+import { bodyText, headingText } from '@/styles/shared.css'
+import { colors, fonts } from '@/styles/tokens'
 
 export const faqAccordionContainer = style({
   border: `1px solid ${colors.border}`,

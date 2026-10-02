@@ -1,6 +1,6 @@
 import { useId, useState } from 'react'
-import chevron from '../../assets/chevron.svg'
-import type { Source } from '../../types/content'
+import chevron from '@/assets/chevron.svg'
+import type { Source } from '@/types/content'
 import {
   faqAccordionChevronClosed,
   faqAccordionContainer,

@@ -1,6 +1,6 @@
-import { SEARCH_RADIUS_METRES } from '../constants/map'
-import type { LocationCoordinates } from '../types/location'
-import type { GlutenFreeLevel, Place } from '../types/place'
+import { SEARCH_RADIUS_METRES } from '@/constants/map'
+import type { LocationCoordinates } from '@/types/location'
+import type { GlutenFreeLevel, Place } from '@/types/place'
 
 const OVERPASS_URL = 'https://overpass-api.de/api/interpreter'
 

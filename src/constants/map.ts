@@ -1,4 +1,4 @@
-import type { LocationCoordinates } from '../types/location'
+import type { LocationCoordinates } from '@/types/location'
 
 export const DEFAULT_LOCATION: LocationCoordinates = [51.505, -0.09]
 

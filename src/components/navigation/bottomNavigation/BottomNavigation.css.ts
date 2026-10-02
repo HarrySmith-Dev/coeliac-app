@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css'
-import { tabletBreakpoint } from '../../../styles/global.css'
-import { colors, fonts } from '../../../styles/tokens'
+import { tabletBreakpoint } from '@/styles/global.css'
+import { colors, fonts } from '@/styles/tokens'
 
 export const bottomNavigationContainer = style({
   backgroundColor: colors.surface,

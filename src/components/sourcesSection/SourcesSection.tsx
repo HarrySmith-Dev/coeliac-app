@@ -1,5 +1,5 @@
-import { contentLastReviewed } from '../../data/coeliacContent'
-import { sources } from '../../data/sources'
+import { contentLastReviewed } from '@/data/coeliacContent'
+import { sources } from '@/data/sources'
 import {
   sourcesSectionHeading,
   sourcesSectionItem,

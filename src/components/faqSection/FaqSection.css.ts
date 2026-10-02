@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css'
-import { headingText } from '../../styles/shared.css'
-import { colors, fonts } from '../../styles/tokens'
+import { headingText } from '@/styles/shared.css'
+import { colors, fonts } from '@/styles/tokens'
 
 export const faqSection = style({
   scrollMarginTop: '20px',

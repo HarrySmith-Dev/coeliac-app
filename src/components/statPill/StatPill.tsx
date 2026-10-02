@@ -1,4 +1,4 @@
-import type { Source } from '../../types/content'
+import type { Source } from '@/types/content'
 import {
   statPillContainer,
   statPillHeader,

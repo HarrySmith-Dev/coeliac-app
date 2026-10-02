@@ -1,6 +1,6 @@
 import { createVar, style, styleVariants } from '@vanilla-extract/css'
-import { desktopBreakpoint } from '../../styles/global.css'
-import { colors, fonts } from '../../styles/tokens'
+import { desktopBreakpoint } from '@/styles/global.css'
+import { colors, fonts } from '@/styles/tokens'
 
 const headingColor = createVar()
 

@@ -1,17 +1,17 @@
 import { useEffect, useRef } from 'react'
 import { Circle, CircleMarker, MapContainer, TileLayer, useMap } from 'react-leaflet'
 import { Link } from 'react-router-dom'
-import { cardContainer } from '../../styles/shared.css'
-import { colors } from '../../styles/tokens'
-import type { MapFocus } from '../../context/LocationContext'
-import { useUserLocation } from '../../hooks/useUserLocation'
+import { cardContainer } from '@/styles/shared.css'
+import { colors } from '@/styles/tokens'
+import type { MapFocus } from '@/context/LocationContext'
+import { useUserLocation } from '@/hooks/useUserLocation'
 import {
   DEFAULT_LOCATION,
   MIN_SEARCH_ZOOM,
   NEARBY_ZOOM,
   SEARCH_RADIUS_METRES,
-} from '../../constants/map'
-import { useGlutenFreePlaces } from '../../hooks/useGlutenFreePlaces'
+} from '@/constants/map'
+import { useGlutenFreePlaces } from '@/hooks/useGlutenFreePlaces'
 import {
   mapCardContainer,
   mapCardHeader,

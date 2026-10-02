@@ -1,8 +1,8 @@
 import { DomEvent } from 'leaflet'
 import { useEffect, useRef, useState } from 'react'
 import { useMap, useMapEvents } from 'react-leaflet'
-import { useUserLocation } from '../../hooks/useUserLocation'
-import { MIN_SEARCH_DISTANCE_METRES, MIN_SEARCH_ZOOM } from '../../constants/map'
+import { useUserLocation } from '@/hooks/useUserLocation'
+import { MIN_SEARCH_DISTANCE_METRES, MIN_SEARCH_ZOOM } from '@/constants/map'
 import { searchAreaButton, searchAreaControl, searchAreaHint } from './MapCard.css'
 
 const SearchAreaControl = () => {

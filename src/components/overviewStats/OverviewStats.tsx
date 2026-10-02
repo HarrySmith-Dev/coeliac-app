@@ -1,4 +1,4 @@
-import StatPill, { type StatPillProps } from '../statPill/StatPill'
+import StatPill, { type StatPillProps } from '@/components/statPill/StatPill'
 import { overviewStats } from './OverviewStats.css'
 
 export type StatPillData = StatPillProps & { id: string }

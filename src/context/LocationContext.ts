@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import type { LocationCoordinates } from '../types/location'
+import type { LocationCoordinates } from '@/types/location'
 
 export type MapFocus = { position: LocationCoordinates }
 

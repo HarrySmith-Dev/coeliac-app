@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import type { Faq } from '../../types/content'
-import FaqAccordion from '../faqAccordion/FaqAccordion'
+import type { Faq } from '@/types/content'
+import FaqAccordion from '@/components/faqAccordion/FaqAccordion'
 import { faqSection, faqSectionHeading, faqSectionLink } from './FaqSection.css'
 
 type FaqSectionProps = {

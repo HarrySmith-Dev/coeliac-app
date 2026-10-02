@@ -1,14 +1,9 @@
-import FaqSection from '../../components/faqSection/FaqSection'
-import InfoCard from '../../components/infoCard/InfoCard'
-import SourcesSection from '../../components/sourcesSection/SourcesSection'
-import OverviewStats from '../../components/overviewStats/OverviewStats'
-import {
-  aboutOverviewDescription,
-  aboutOverviewStats,
-  faqs,
-  symptoms,
-} from '../../data/coeliacContent'
-import { pageLayout, rowContainer, sectionDivider } from '../../styles/shared.css'
+import FaqSection from '@/components/faqSection/FaqSection'
+import InfoCard from '@/components/infoCard/InfoCard'
+import SourcesSection from '@/components/sourcesSection/SourcesSection'
+import OverviewStats from '@/components/overviewStats/OverviewStats'
+import { aboutOverviewDescription, aboutOverviewStats, faqs, symptoms } from '@/data/coeliacContent'
+import { pageLayout, rowContainer, sectionDivider } from '@/styles/shared.css'
 
 const About = () => {
   return (

@@ -1,6 +1,6 @@
-import aboutIcon from '../assets/aboutIcon.svg'
-import homeIcon from '../assets/homeIcon.svg'
-import mapIcon from '../assets/mapIcon.svg'
+import aboutIcon from '@/assets/aboutIcon.svg'
+import homeIcon from '@/assets/homeIcon.svg'
+import mapIcon from '@/assets/mapIcon.svg'
 
 type NavLinkData = {
   label: string

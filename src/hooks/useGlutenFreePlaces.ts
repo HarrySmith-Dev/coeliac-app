@@ -1,8 +1,8 @@
 import { keepPreviousData, skipToken, useQuery } from '@tanstack/react-query'
 import { useUserLocation } from './useUserLocation'
-import { fetchGlutenFreePlaces, OverpassError } from '../api/overpass'
-import { PLACES_CACHE_TIME, PLACES_MAX_ATTEMPTS, PLACES_QUERY_KEY } from '../constants/places'
-import { roundCoordinates } from '../utils/coordinates'
+import { fetchGlutenFreePlaces, OverpassError } from '@/api/overpass'
+import { PLACES_CACHE_TIME, PLACES_MAX_ATTEMPTS, PLACES_QUERY_KEY } from '@/constants/places'
+import { roundCoordinates } from '@/utils/coordinates'
 
 const isRetryable = (error: Error) =>
   !(error instanceof OverpassError) ||

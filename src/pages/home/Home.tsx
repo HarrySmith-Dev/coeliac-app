@@ -1,10 +1,10 @@
-import FaqSection from '../../components/faqSection/FaqSection'
-import InfoCard from '../../components/infoCard/InfoCard'
-import MapCard from '../../components/mapCard/MapCard'
-import NearMeButton from '../../components/nearMeButton/NearMeButton'
-import OverviewStats from '../../components/overviewStats/OverviewStats'
-import { featuredFaqs, homeOverviewDescription, homeOverviewStats } from '../../data/coeliacContent'
-import { pageLayout, rowContainer, sectionDivider } from '../../styles/shared.css'
+import FaqSection from '@/components/faqSection/FaqSection'
+import InfoCard from '@/components/infoCard/InfoCard'
+import MapCard from '@/components/mapCard/MapCard'
+import NearMeButton from '@/components/nearMeButton/NearMeButton'
+import OverviewStats from '@/components/overviewStats/OverviewStats'
+import { featuredFaqs, homeOverviewDescription, homeOverviewStats } from '@/data/coeliacContent'
+import { pageLayout, rowContainer, sectionDivider } from '@/styles/shared.css'
 
 const Home = () => {
   return (

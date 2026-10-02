@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState, type ReactNode } from 'react'
-import { DEFAULT_LOCATION } from '../constants/map'
+import { DEFAULT_LOCATION } from '@/constants/map'
 import { LocationContext, type MapFocus } from './LocationContext'
-import { loadSearchCentre, saveSearchCentre } from '../utils/searchCentreStorage'
-import type { LocationCoordinates } from '../types/location'
+import { loadSearchCentre, saveSearchCentre } from '@/utils/searchCentreStorage'
+import type { LocationCoordinates } from '@/types/location'
 
 const devLocationOverride: LocationCoordinates | null = import.meta.env.DEV
   ? DEFAULT_LOCATION
