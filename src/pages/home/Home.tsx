@@ -1,11 +1,10 @@
-import FaqAccordion from '../../components/faqAccordion/FaqAccordion'
+import FaqSection from '../../components/faqSection/FaqSection'
 import InfoCard from '../../components/infoCard/InfoCard'
 import MapCard from '../../components/mapCard/MapCard'
 import NearMeButton from '../../components/nearMeButton/NearMeButton'
 import OverviewStats from '../../components/statPill/OverviewStats'
-import { faqs, homeOverviewDescription, homeOverviewStats } from '../../data/coeliacContent'
-import { pageLayout, rowContainer } from '../../styles/shared.css'
-import { homeDivider } from './Home.css'
+import { featuredFaqs, homeOverviewDescription, homeOverviewStats } from '../../data/coeliacContent'
+import { pageLayout, rowContainer, sectionDivider } from '../../styles/shared.css'
 
 const Home = () => {
   return (
@@ -19,12 +18,8 @@ const Home = () => {
         <MapCard />
       </div>
 
-      <hr className={homeDivider} />
-      <h2>Faq</h2>
-
-      {faqs.map((faq) => (
-        <FaqAccordion key={faq.id} title={faq.title} description={faq.description} />
-      ))}
+      <hr className={sectionDivider} />
+      <FaqSection faqs={featuredFaqs} showAllLink />
     </section>
   )
 }

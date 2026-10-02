@@ -45,3 +45,11 @@ export const statPillText = style({
   fontSize: '12px',
   margin: '0',
 })
+
+export const statPillSource = style({
+  color: 'inherit',
+  fontSize: '11px',
+  margin: '4px 0 0',
+  opacity: 0.8,
+  textDecoration: 'underline',
+})

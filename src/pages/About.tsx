@@ -1,5 +1,6 @@
-import FaqAccordion from '../components/faqAccordion/FaqAccordion'
+import FaqSection from '../components/faqSection/FaqSection'
 import InfoCard from '../components/infoCard/InfoCard'
+import SourcesSection from '../components/sourcesSection/SourcesSection'
 import OverviewStats from '../components/statPill/OverviewStats'
 import {
   aboutOverviewDescription,
@@ -7,7 +8,7 @@ import {
   faqs,
   symptoms,
 } from '../data/coeliacContent'
-import { pageLayout, rowContainer } from '../styles/shared.css'
+import { pageLayout, rowContainer, sectionDivider } from '../styles/shared.css'
 
 const About = () => {
   return (
@@ -18,9 +19,12 @@ const About = () => {
         </InfoCard>
         <InfoCard title="Common Symptoms" listItems={symptoms} />
       </div>
-      {faqs.map((faq) => (
-        <FaqAccordion key={faq.id} title={faq.title} description={faq.description} />
-      ))}
+
+      <hr className={sectionDivider} />
+      <FaqSection id="faq" faqs={faqs} />
+
+      <hr className={sectionDivider} />
+      <SourcesSection />
     </section>
   )
 }
