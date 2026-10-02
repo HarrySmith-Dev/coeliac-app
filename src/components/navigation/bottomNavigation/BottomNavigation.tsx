@@ -6,7 +6,7 @@ import {
   bottomNavigationList,
 } from './BottomNavigation.css'
 import { NavLink } from 'react-router-dom'
-import { navLinks } from '../../../data/navigation'
+import { navLinks } from '@/data/navigation'
 
 const BottomNavigation = () => {
   return (

@@ -1,7 +1,7 @@
 import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister'
 import { defaultShouldDehydrateQuery, QueryClient } from '@tanstack/react-query'
 import type { PersistQueryClientProviderProps } from '@tanstack/react-query-persist-client'
-import { PLACES_CACHE_TIME, PLACES_QUERY_KEY } from './places/useGlutenFreePlaces'
+import { PLACES_CACHE_TIME, PLACES_QUERY_KEY } from '@/constants/places'
 
 export const queryClient = new QueryClient({
   defaultOptions: {

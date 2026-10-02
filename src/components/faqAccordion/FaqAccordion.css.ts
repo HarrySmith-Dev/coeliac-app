@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css'
-import { bodyText, headingText } from '../../styles/shared.css'
-import { colors } from '../../styles/tokens'
+import { bodyText, headingText } from '@/styles/shared.css'
+import { colors, fonts } from '@/styles/tokens'
 
 export const faqAccordionContainer = style({
   border: `1px solid ${colors.border}`,
@@ -59,3 +59,14 @@ export const faqAccordionCardText = style([
     margin: '15px 0',
   },
 ])
+
+export const faqAccordionSources = style({
+  color: colors.textMuted,
+  fontFamily: fonts.body,
+  fontSize: '14px',
+  margin: '0 0 5px',
+})
+
+export const faqAccordionSourceLink = style({
+  color: colors.primary,
+})

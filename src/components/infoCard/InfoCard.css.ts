@@ -1,7 +1,7 @@
 import { style, styleVariants } from '@vanilla-extract/css'
-import { desktopBreakpoint } from '../../styles/global.css'
-import { bodyText, headingText } from '../../styles/shared.css'
-import { colors } from '../../styles/tokens'
+import { desktopBreakpoint } from '@/styles/global.css'
+import { bodyText, headingText } from '@/styles/shared.css'
+import { colors } from '@/styles/tokens'
 
 export const infoCardContainer = style({
   '@media': {

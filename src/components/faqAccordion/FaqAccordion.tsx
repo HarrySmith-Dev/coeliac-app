@@ -1,5 +1,6 @@
 import { useId, useState } from 'react'
-import chevron from '../../assets/chevron.svg'
+import chevron from '@/assets/chevron.svg'
+import type { Source } from '@/types/content'
 import {
   faqAccordionChevronClosed,
   faqAccordionContainer,
@@ -8,15 +9,18 @@ import {
   faqAccordionCardText,
   faqAccordionHeader,
   faqAccordionCardHeading,
+  faqAccordionSourceLink,
+  faqAccordionSources,
 } from './FaqAccordion.css'
 
 type FaqAccordionProps = {
   title: string
   description?: string
   listItems?: string[]
+  sources?: Source[]
 }
 
-const FaqAccordion = ({ title, description, listItems }: FaqAccordionProps) => {
+const FaqAccordion = ({ title, description, listItems, sources }: FaqAccordionProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const contentId = useId()
 
@@ -49,6 +53,24 @@ const FaqAccordion = ({ title, description, listItems }: FaqAccordionProps) => {
               <li key={item}>{item}</li>
             ))}
           </ul>
+        )}
+        {sources && sources.length > 0 && (
+          <p className={faqAccordionSources}>
+            Sources:{' '}
+            {sources.map((source, index) => (
+              <span key={source.url}>
+                {index > 0 && ', '}
+                <a
+                  href={source.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={faqAccordionSourceLink}
+                >
+                  {source.publisher}: {source.title}
+                </a>
+              </span>
+            ))}
+          </p>
         )}
       </div>
     </div>

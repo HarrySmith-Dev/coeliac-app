@@ -1,14 +1,8 @@
 import { createVar, style, styleVariants } from '@vanilla-extract/css'
-import { desktopBreakpoint } from '../../styles/global.css'
-import { colors, fonts } from '../../styles/tokens'
+import { desktopBreakpoint } from '@/styles/global.css'
+import { colors, fonts } from '@/styles/tokens'
 
 const headingColor = createVar()
-
-export const statPillGroup = style({
-  display: 'flex',
-  gap: '10px',
-  margin: '0 0 40px',
-})
 
 export const statPillContainer = style({
   borderRadius: '15px',
@@ -44,4 +38,12 @@ export const statPillHeader = style({
 export const statPillText = style({
   fontSize: '12px',
   margin: '0',
+})
+
+export const statPillSource = style({
+  color: 'inherit',
+  fontSize: '11px',
+  margin: '4px 0 0',
+  opacity: 0.8,
+  textDecoration: 'underline',
 })

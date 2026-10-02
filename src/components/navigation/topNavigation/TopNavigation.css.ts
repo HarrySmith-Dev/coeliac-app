@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css'
-import { desktopBreakpoint } from '../../../styles/global.css'
-import { colors, fonts } from '../../../styles/tokens'
+import { desktopBreakpoint } from '@/styles/global.css'
+import { colors, fonts } from '@/styles/tokens'
 
 export const topNavigationContainer = style({
   backgroundColor: colors.primary,

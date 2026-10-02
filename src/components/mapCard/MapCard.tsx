@@ -1,12 +1,17 @@
 import { useEffect, useRef } from 'react'
 import { Circle, CircleMarker, MapContainer, TileLayer, useMap } from 'react-leaflet'
 import { Link } from 'react-router-dom'
-import { cardContainer } from '../../styles/shared.css'
-import { colors } from '../../styles/tokens'
-import { useUserLocation, type MapFocus } from '../../location/LocationContext'
-import type { LocationCoordinates } from '../../location/types'
-import { SEARCH_RADIUS_METRES } from '../../places/overpass'
-import { useGlutenFreePlaces } from '../../places/useGlutenFreePlaces'
+import { cardContainer } from '@/styles/shared.css'
+import { colors } from '@/styles/tokens'
+import type { MapFocus } from '@/context/LocationContext'
+import { useUserLocation } from '@/hooks/useUserLocation'
+import {
+  DEFAULT_LOCATION,
+  MIN_SEARCH_ZOOM,
+  NEARBY_ZOOM,
+  SEARCH_RADIUS_METRES,
+} from '@/constants/map'
+import { useGlutenFreePlaces } from '@/hooks/useGlutenFreePlaces'
 import {
   mapCardContainer,
   mapCardHeader,
@@ -17,11 +22,7 @@ import {
   mapCardStatus,
 } from './MapCard.css'
 import PlaceMarker from './PlaceMarker'
-import SearchAreaControl, { MIN_SEARCH_ZOOM } from './SearchAreaControl'
-
-const defaultLocation: LocationCoordinates = [51.505, -0.09]
-
-const nearbyZoom = 14
+import SearchAreaControl from './SearchAreaControl'
 
 const searchRadiusLabel = `${SEARCH_RADIUS_METRES / 1000} km`
 
@@ -33,12 +34,13 @@ const MapFocusUpdater = ({ focus }: { focus: MapFocus | null }) => {
   useEffect(() => {
     if (focus && focus !== handledFocus.current) {
       handledFocus.current = focus
-      map.setView(focus.position, Math.max(map.getZoom(), nearbyZoom))
+      map.setView(focus.position, Math.max(map.getZoom(), NEARBY_ZOOM))
     }
   }, [focus, map])
 
   return null
 }
+
 type MapCardProps = {
   fullPage?: boolean
 }
@@ -84,8 +86,8 @@ const MapCard = ({ fullPage = false }: MapCardProps) => {
       </div>
       <MapContainer
         className={fullPage ? mapCardMapFullPage : mapCardMap}
-        center={searchCentre ?? defaultLocation}
-        zoom={searchCentre ? nearbyZoom : MIN_SEARCH_ZOOM}
+        center={searchCentre ?? DEFAULT_LOCATION}
+        zoom={searchCentre ? NEARBY_ZOOM : MIN_SEARCH_ZOOM}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

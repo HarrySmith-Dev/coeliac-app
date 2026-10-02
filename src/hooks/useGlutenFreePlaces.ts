@@ -1,18 +1,8 @@
 import { keepPreviousData, skipToken, useQuery } from '@tanstack/react-query'
-import { useUserLocation } from '../location/LocationContext'
-import type { LocationCoordinates } from '../location/types'
-import { fetchGlutenFreePlaces, OverpassError } from './overpass'
-
-export const PLACES_QUERY_KEY = 'glutenFreePlaces'
-
-export const PLACES_CACHE_TIME = 24 * 60 * 60 * 1000
-
-const MAX_ATTEMPTS = 3
-
-const roundCoordinates = ([lat, lng]: LocationCoordinates): LocationCoordinates => [
-  Math.round(lat * 1000) / 1000,
-  Math.round(lng * 1000) / 1000,
-]
+import { useUserLocation } from './useUserLocation'
+import { fetchGlutenFreePlaces, OverpassError } from '@/api/overpass'
+import { PLACES_CACHE_TIME, PLACES_MAX_ATTEMPTS, PLACES_QUERY_KEY } from '@/constants/places'
+import { roundCoordinates } from '@/utils/coordinates'
 
 const isRetryable = (error: Error) =>
   !(error instanceof OverpassError) ||
@@ -32,7 +22,7 @@ export const useGlutenFreePlaces = () => {
     placeholderData: keepPreviousData,
     staleTime: PLACES_CACHE_TIME,
     gcTime: PLACES_CACHE_TIME,
-    retry: (failureCount, error) => failureCount < MAX_ATTEMPTS - 1 && isRetryable(error),
+    retry: (failureCount, error) => failureCount < PLACES_MAX_ATTEMPTS - 1 && isRetryable(error),
     retryDelay: (attempt) => 2000 * 2 ** attempt,
   })
 }

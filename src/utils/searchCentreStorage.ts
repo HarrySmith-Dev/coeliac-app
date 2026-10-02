@@ -1,4 +1,4 @@
-import type { LocationCoordinates } from './types'
+import type { LocationCoordinates } from '@/types/location'
 
 const STORAGE_KEY = 'coeliac-app:search-centre'
 

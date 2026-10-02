@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { cardContainer } from '../../styles/shared.css'
+import { cardContainer } from '@/styles/shared.css'
 import {
   infoCardContainer,
   infoCardHeader,

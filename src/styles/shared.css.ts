@@ -64,3 +64,8 @@ export const bodyText = style({
     },
   },
 })
+
+export const sectionDivider = style({
+  border: `1px solid ${colors.divider}`,
+  margin: '100px 0',
+})

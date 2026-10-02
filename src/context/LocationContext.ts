@@ -1,5 +1,5 @@
-import { createContext, useContext } from 'react'
-import type { LocationCoordinates } from './types'
+import { createContext } from 'react'
+import type { LocationCoordinates } from '@/types/location'
 
 export type MapFocus = { position: LocationCoordinates }
 
@@ -13,13 +13,3 @@ type LocationContextValue = {
 }
 
 export const LocationContext = createContext<LocationContextValue | null>(null)
-
-export const useUserLocation = () => {
-  const context = useContext(LocationContext)
-
-  if (!context) {
-    throw new Error('useUserLocation must be used within a LocationProvider')
-  }
-
-  return context
-}

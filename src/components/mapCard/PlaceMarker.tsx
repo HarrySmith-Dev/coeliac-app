@@ -1,6 +1,6 @@
 import { CircleMarker, Popup } from 'react-leaflet'
-import type { Place } from '../../places/types'
-import { colors } from '../../styles/tokens'
+import type { Place } from '@/types/place'
+import { colors } from '@/styles/tokens'
 import { placePopupCuisine, placePopupDetail, placePopupLevel, placePopupName } from './MapCard.css'
 
 const glutenFreeLabel = {
