@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react'
+import type { CircleMarker as LeafletCircleMarker, Map as LeafletMap } from 'leaflet'
+import { useEffect, useId, useRef, useState } from 'react'
 import { Circle, CircleMarker, MapContainer, TileLayer, useMap } from 'react-leaflet'
 import { Link } from 'react-router-dom'
 import { cardContainer } from '@/styles/shared.css'
@@ -16,11 +17,14 @@ import {
   mapCardContainer,
   mapCardHeader,
   mapCardLink,
+  mapCardActions,
   mapCardMap,
+  mapCardMapArea,
   mapCardMapFullPage,
   mapCardRetry,
   mapCardStatus,
 } from './MapCard.css'
+import PlaceList from './PlaceList'
 import PlaceMarker from './PlaceMarker'
 import SearchAreaControl from './SearchAreaControl'
 
@@ -46,10 +50,25 @@ type MapCardProps = {
 }
 
 const MapCard = ({ fullPage = false }: MapCardProps) => {
-  const { userLocation, searchCentre, mapFocus } = useUserLocation()
+  const { userLocation, searchCentre, mapFocus, locationError } = useUserLocation()
   const { data: places, isFetching, isError, refetch } = useGlutenFreePlaces()
+  const [map, setMap] = useState<LeafletMap | null>(null)
+  const markers = useRef(new Map<string, LeafletCircleMarker>())
+  const [isListOpen, setIsListOpen] = useState(false)
+  const listId = useId()
+  const hasPlaces = Boolean(searchCentre && places && places.length > 0)
+
+  const showPlaceOnMap = (placeId: string) => {
+    setIsListOpen(false)
+    map?.getContainer().scrollIntoView({ block: 'nearest' })
+    map?.getContainer().focus()
+    markers.current.get(placeId)?.openPopup()
+  }
 
   const renderStatus = () => {
+    if (locationError) {
+      return locationError
+    }
     if (!searchCentre) {
       return 'Share your location or search an area of the map'
     }
@@ -78,36 +97,71 @@ const MapCard = ({ fullPage = false }: MapCardProps) => {
         <p className={mapCardStatus} aria-live="polite">
           {renderStatus()}
         </p>
-        {!fullPage && (
-          <Link to="/map" className={mapCardLink}>
-            View full map
-          </Link>
-        )}
+        <div className={mapCardActions}>
+          {hasPlaces && (
+            <button
+              type="button"
+              className={mapCardLink}
+              aria-expanded={isListOpen}
+              aria-controls={listId}
+              onClick={() => setIsListOpen((isOpen) => !isOpen)}
+            >
+              {isListOpen ? 'Map view' : 'List view'}
+            </button>
+          )}
+          {!fullPage && (
+            <Link to="/map" className={mapCardLink}>
+              View full map
+            </Link>
+          )}
+        </div>
       </div>
-      <MapContainer
-        className={fullPage ? mapCardMapFullPage : mapCardMap}
-        center={searchCentre ?? DEFAULT_LOCATION}
-        zoom={searchCentre ? NEARBY_ZOOM : MIN_SEARCH_ZOOM}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <MapFocusUpdater focus={mapFocus} />
-        <SearchAreaControl />
-        {searchCentre && (
-          <Circle
-            center={searchCentre}
-            radius={SEARCH_RADIUS_METRES}
-            interactive={false}
-            pathOptions={{ color: colors.primary, weight: 1, fillOpacity: 0.05 }}
+      <div className={mapCardMapArea}>
+        <MapContainer
+          ref={setMap}
+          className={fullPage ? mapCardMapFullPage : mapCardMap}
+          center={searchCentre ?? DEFAULT_LOCATION}
+          zoom={searchCentre ? NEARBY_ZOOM : MIN_SEARCH_ZOOM}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <MapFocusUpdater focus={mapFocus} />
+          <SearchAreaControl />
+          {searchCentre && (
+            <Circle
+              center={searchCentre}
+              radius={SEARCH_RADIUS_METRES}
+              interactive={false}
+              pathOptions={{ color: colors.primary, weight: 1, fillOpacity: 0.05 }}
+            />
+          )}
+          {places?.map((place) => (
+            <PlaceMarker
+              key={place.id}
+              place={place}
+              ref={(marker) => {
+                if (marker) {
+                  markers.current.set(place.id, marker)
+                }
+                return () => {
+                  markers.current.delete(place.id)
+                }
+              }}
+            />
+          ))}
+          {userLocation && <CircleMarker center={userLocation} radius={8} />}
+        </MapContainer>
+        {isListOpen && hasPlaces && searchCentre && places && (
+          <PlaceList
+            id={listId}
+            places={places}
+            searchCentre={searchCentre}
+            onShowOnMap={showPlaceOnMap}
           />
         )}
-        {places?.map((place) => (
-          <PlaceMarker key={place.id} place={place} />
-        ))}
-        {userLocation && <CircleMarker center={userLocation} radius={8} />}
-      </MapContainer>
+      </div>
     </article>
   )
 }

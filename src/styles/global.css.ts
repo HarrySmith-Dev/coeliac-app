@@ -3,12 +3,19 @@ import { colors } from './tokens'
 
 globalStyle('html, body, #root', {
   height: '100%',
-  scrollBehavior: 'smooth',
+})
+
+globalStyle('html', {
+  '@media': {
+    '(prefers-reduced-motion: no-preference)': {
+      scrollBehavior: 'smooth',
+    },
+  },
 })
 
 globalStyle('body', {
   margin: 0,
-  padding: 0,
+  padding: '0 env(safe-area-inset-right) 0 env(safe-area-inset-left)',
   backgroundColor: colors.pageBackground,
 })
 

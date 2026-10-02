@@ -31,7 +31,7 @@ export const statPillTone = styleVariants(
 export const statPillHeader = style({
   color: headingColor,
   fontSize: '18px',
-  fontWeight: 'bold',
+  fontWeight: 600,
   margin: '0 0 2px',
 })
 

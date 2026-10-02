@@ -3,10 +3,18 @@ import { desktopBreakpoint } from '@/styles/global.css'
 import { colors, fonts } from '@/styles/tokens'
 
 export const mapCardLink = style({
+  background: 'none',
+  border: 'none',
   color: colors.primary,
-  textDecoration: 'none',
+  cursor: 'pointer',
   fontFamily: fonts.body,
   fontSize: '14px',
+  padding: 0,
+  textDecoration: 'none',
+
+  ':hover': {
+    textDecoration: 'underline',
+  },
 })
 
 export const mapCardContainer = style({
@@ -36,6 +44,16 @@ export const mapCardMapFullPage = style([
   },
 ])
 
+export const mapCardActions = style({
+  display: 'flex',
+  flexShrink: 0,
+  gap: '16px',
+})
+
+export const mapCardMapArea = style({
+  position: 'relative',
+})
+
 export const mapCardHeader = style({
   display: 'flex',
   justifyContent: 'space-between',
@@ -64,7 +82,7 @@ export const mapCardRetry = style({
 export const placePopupName = style({
   fontFamily: fonts.heading,
   fontSize: '16px',
-  fontWeight: 'bold',
+  fontWeight: 600,
   margin: '0 0 4px',
 })
 

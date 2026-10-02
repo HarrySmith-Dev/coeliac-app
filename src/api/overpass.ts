@@ -1,6 +1,7 @@
 import { SEARCH_RADIUS_METRES } from '@/constants/map'
 import type { LocationCoordinates } from '@/types/location'
 import type { GlutenFreeLevel, Place } from '@/types/place'
+import { toSafeUrl } from '@/utils/url'
 
 const OVERPASS_URL = 'https://overpass-api.de/api/interpreter'
 
@@ -39,6 +40,11 @@ const buildQuery = ([lat, lng]: LocationCoordinates) => {
   return `[out:json][timeout:15];(node${filters};way${filters};);out center tags;`
 }
 
+const formatCuisine = (cuisine?: string) => {
+  const formatted = cuisine?.replaceAll('_', ' ').replaceAll(';', ', ')
+  return formatted && formatted.charAt(0).toUpperCase() + formatted.slice(1)
+}
+
 const toPlace = ({ type, id, lat, lon, center, tags = {} }: OverpassElement): Place | null => {
   const latitude = lat ?? center?.lat
   const longitude = lon ?? center?.lon
@@ -55,9 +61,9 @@ const toPlace = ({ type, id, lat, lon, center, tags = {} }: OverpassElement): Pl
     name: tags.name,
     position: [latitude, longitude],
     glutenFree: tags['diet:gluten_free'] as GlutenFreeLevel,
-    cuisine: tags.cuisine?.replaceAll('_', ' ').replaceAll(';', ', '),
+    cuisine: formatCuisine(tags.cuisine),
     address: address || undefined,
-    website: tags.website,
+    website: toSafeUrl(tags.website),
   }
 }
 

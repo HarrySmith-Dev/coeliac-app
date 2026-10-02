@@ -7,7 +7,7 @@ export const nearMeButtonContainer = style({
   justifyContent: 'center',
   alignItems: 'center',
   padding: '15px',
-  backgroundColor: colors.accent,
+  backgroundColor: colors.accentStrong,
   border: 'none',
   borderRadius: '15px',
   color: colors.surface,
@@ -17,7 +17,7 @@ export const nearMeButtonContainer = style({
   gap: '10px',
 
   ':hover': {
-    backgroundColor: colors.accentHover,
+    backgroundColor: colors.accentStrongHover,
   },
 
   '@media': {

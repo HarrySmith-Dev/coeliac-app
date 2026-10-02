@@ -23,7 +23,7 @@ export const persistOptions: PersistQueryClientProviderProps['persistOptions'] =
     key: 'coeliac-app:query-cache',
   }),
   maxAge: PLACES_CACHE_TIME,
-  buster: 'places-v1',
+  buster: 'places-v2',
   dehydrateOptions: {
     shouldDehydrateQuery: (query) =>
       query.queryKey[0] === PLACES_QUERY_KEY && defaultShouldDehydrateQuery(query),

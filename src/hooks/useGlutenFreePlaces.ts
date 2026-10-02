@@ -1,4 +1,4 @@
-import { keepPreviousData, skipToken, useQuery } from '@tanstack/react-query'
+import { skipToken, useQuery } from '@tanstack/react-query'
 import { useUserLocation } from './useUserLocation'
 import { fetchGlutenFreePlaces, OverpassError } from '@/api/overpass'
 import { PLACES_CACHE_TIME, PLACES_MAX_ATTEMPTS, PLACES_QUERY_KEY } from '@/constants/places'
@@ -19,7 +19,6 @@ export const useGlutenFreePlaces = () => {
     queryFn: searchLocation
       ? ({ signal }) => fetchGlutenFreePlaces(searchLocation, signal)
       : skipToken,
-    placeholderData: keepPreviousData,
     staleTime: PLACES_CACHE_TIME,
     gcTime: PLACES_CACHE_TIME,
     retry: (failureCount, error) => failureCount < PLACES_MAX_ATTEMPTS - 1 && isRetryable(error),

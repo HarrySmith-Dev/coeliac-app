@@ -8,6 +8,7 @@ import {
   sourcesSectionReviewed,
   sourcesSectionText,
 } from './SourcesSection.css'
+import ExternalLink from '@/components/externalLink/ExternalLink'
 
 const SourcesSection = () => {
   return (
@@ -20,14 +21,9 @@ const SourcesSection = () => {
       <ul className={sourcesSectionList}>
         {Object.values(sources).map((source) => (
           <li key={source.url} className={sourcesSectionItem}>
-            <a
-              href={source.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={sourcesSectionLink}
-            >
+            <ExternalLink href={source.url} className={sourcesSectionLink}>
               {source.publisher}: {source.title}
-            </a>
+            </ExternalLink>
           </li>
         ))}
       </ul>

@@ -9,8 +9,9 @@ export const colors = {
   primaryActive: '#2F6F55',
   primaryLight: '#E1F5EE',
   accent: '#D85A30',
-  accentHover: '#C14D2A',
-  gold: '#99733E',
+  accentStrong: '#C14D2A',
+  accentStrongHover: '#A3401F',
+  gold: '#86642F',
   green: { background: '#EAF3DE', heading: '#173404', text: '#3B6D11' },
   amber: { background: '#FAEEDA', heading: '#412402', text: '#854F0B' },
 }

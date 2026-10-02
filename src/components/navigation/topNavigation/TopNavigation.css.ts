@@ -55,9 +55,17 @@ export const topNavigationSubtitle = style({
   },
 })
 
-export const topNavigationLinkList = style({
+export const topNavigationNav = style({
   display: 'none',
 
+  '@media': {
+    [desktopBreakpoint]: {
+      display: 'block',
+    },
+  },
+})
+
+export const topNavigationLinkList = style({
   '@media': {
     [desktopBreakpoint]: {
       listStyle: 'none',
@@ -75,8 +83,10 @@ export const topNavigationLink = style({
   fontFamily: fonts.body,
   fontSize: '16px',
 
+  textUnderlineOffset: '6px',
+
   ':hover': {
-    color: colors.accent,
+    textDecoration: 'underline',
   },
 
   '@media': {
@@ -87,5 +97,7 @@ export const topNavigationLink = style({
 })
 
 export const topNavigationItemActive = style({
-  color: colors.accent,
+  fontWeight: 600,
+  textDecoration: 'underline',
+  textDecorationThickness: '2px',
 })

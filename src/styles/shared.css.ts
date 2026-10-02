@@ -5,7 +5,7 @@ import { colors, fonts } from './tokens'
 export const pageLayout = style({
   display: 'flex',
   flexDirection: 'column',
-  padding: '20px 20px 100px',
+  padding: '20px 20px calc(100px + env(safe-area-inset-bottom))',
 
   '@media': {
     [tabletBreakpoint]: {
@@ -38,7 +38,7 @@ export const cardContainer = style({
 export const headingText = style({
   fontFamily: fonts.heading,
   fontSize: '18px',
-  fontWeight: 'bold',
+  fontWeight: 600,
 
   '@media': {
     [tabletBreakpoint]: {
@@ -68,4 +68,16 @@ export const bodyText = style({
 export const sectionDivider = style({
   border: `1px solid ${colors.divider}`,
   margin: '100px 0',
+})
+
+export const visuallyHidden = style({
+  border: 0,
+  clip: 'rect(0 0 0 0)',
+  height: '1px',
+  margin: '-1px',
+  overflow: 'hidden',
+  padding: 0,
+  position: 'absolute',
+  whiteSpace: 'nowrap',
+  width: '1px',
 })

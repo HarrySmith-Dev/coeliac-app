@@ -5,8 +5,11 @@ import NearMeButton from '@/components/nearMeButton/NearMeButton'
 import OverviewStats from '@/components/overviewStats/OverviewStats'
 import { featuredFaqs, homeOverviewDescription, homeOverviewStats } from '@/data/coeliacContent'
 import { pageLayout, rowContainer, sectionDivider } from '@/styles/shared.css'
+import { usePageTitle } from '@/hooks/usePageTitle'
 
 const Home = () => {
+  usePageTitle()
+
   return (
     <section id="home" className={pageLayout}>
       <div className={rowContainer}>
