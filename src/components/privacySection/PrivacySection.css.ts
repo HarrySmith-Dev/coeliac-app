@@ -1,6 +1,5 @@
 import { style } from '@vanilla-extract/css'
 import { desktopBreakpoint, tabletBreakpoint } from '@/styles/global.css'
-import { inlineLink } from '@/styles/shared.css'
 import { colors, fonts } from '@/styles/tokens'
 
 export const privacySectionPointTitle = style({
@@ -27,5 +26,3 @@ export const privacySectionLinks = style({
   fontSize: '14px',
   margin: '20px 0 0',
 })
-
-export const privacySectionLink = inlineLink

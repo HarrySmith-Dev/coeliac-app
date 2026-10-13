@@ -38,8 +38,6 @@ In development, the app pretends the user is in central London so there are alwa
 - Colours meet WCAG AA contrast, focus rings are visible everywhere, and tap targets are at least 24px
 - Smooth scrolling respects `prefers-reduced-motion`
 
-The error boundary can be tested in development by visiting `/dev/error`.
-
 ## Performance
 
 - **Lazy-loaded map.** `LazyMapCard` loads `MapCard` with `React.lazy` and a dynamic `import()`, so Vite splits the map card, Leaflet and Leaflet's CSS into a separate file. Pages without a map (About, Privacy, Sources) never download it, which cuts their JavaScript from 144 KB to 96 KB (gzipped).

@@ -1,6 +1,6 @@
 import ExternalLink from '@/components/externalLink/ExternalLink'
 import { GLUTEN_FREE_LABELS } from '@/constants/places'
-import { visuallyHidden } from '@/styles/shared.css'
+import { smallActionLink, visuallyHidden } from '@/styles/shared.css'
 import type { LocationCoordinates } from '@/types/location'
 import type { Place } from '@/types/place'
 import { distanceInMetres, formatDistance } from '@/utils/distance'
@@ -12,7 +12,6 @@ import {
   placeListLevel,
   placeListLinks,
   placeListName,
-  placeListShowButton,
 } from './PlaceList.css'
 import { placeMarkerColor } from './placeMarkerColor'
 
@@ -45,15 +44,11 @@ const PlaceList = ({ id, places, searchCentre, onShowOnMap }: PlaceListProps) =>
             {[formatDistance(distance), place.cuisine, place.address].filter(Boolean).join(' · ')}
           </p>
           <div className={placeListLinks}>
-            <button
-              type="button"
-              className={placeListShowButton}
-              onClick={() => onShowOnMap(place.id)}
-            >
+            <button type="button" className={smallActionLink} onClick={() => onShowOnMap(place.id)}>
               Show <span className={visuallyHidden}> {place.name}</span> on map
             </button>
             {place.website && (
-              <ExternalLink href={place.website} className={placeListShowButton}>
+              <ExternalLink href={place.website} className={smallActionLink}>
                 Website<span className={visuallyHidden}> for {place.name}</span>
               </ExternalLink>
             )}

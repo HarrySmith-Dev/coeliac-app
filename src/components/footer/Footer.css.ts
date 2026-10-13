@@ -1,6 +1,5 @@
 import { style } from '@vanilla-extract/css'
 import { desktopBreakpoint, tabletBreakpoint } from '@/styles/global.css'
-import { actionLink } from '@/styles/shared.css'
 import { colors, fonts } from '@/styles/tokens'
 
 export const footer = style({
@@ -27,13 +26,6 @@ export const footerLinks = style({
   margin: '0 0 12px',
   padding: 0,
 })
-
-export const footerLink = style([
-  actionLink,
-  {
-    fontSize: '14px',
-  },
-])
 
 export const footerDisclaimer = style({
   margin: 0,

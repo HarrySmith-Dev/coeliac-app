@@ -6,7 +6,7 @@ import { GLUTEN_FREE_LABELS } from '@/constants/places'
 import { colors } from '@/styles/tokens'
 import type { Place } from '@/types/place'
 import { placeMarkerColor } from './placeMarkerColor'
-import { placePopupCuisine, placePopupDetail, placePopupLevel, placePopupName } from './MapCard.css'
+import { placePopupDetail, placePopupLevel, placePopupName } from './MapCard.css'
 
 type PlaceMarkerProps = {
   place: Place
@@ -31,7 +31,7 @@ const PlaceMarker = ({ place, ref }: PlaceMarkerProps) => {
       <Popup>
         <div className={placePopupName}>{name}</div>
         <div className={placePopupLevel}>{GLUTEN_FREE_LABELS[glutenFree]}</div>
-        {cuisine && <div className={placePopupCuisine}>{cuisine}</div>}
+        {cuisine && <div className={placePopupDetail}>{cuisine}</div>}
         {address && <div className={placePopupDetail}>{address}</div>}
         {website && <ExternalLink href={website}>Visit {name}'s website</ExternalLink>}
       </Popup>

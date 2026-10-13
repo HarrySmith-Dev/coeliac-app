@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css'
 import { desktopBreakpoint } from '@/styles/global.css'
-import { bodyText, headingText, inlineLink } from '@/styles/shared.css'
+import { bodyText, headingText } from '@/styles/shared.css'
 import { colors, fonts } from '@/styles/tokens'
 
 export const faqAccordionContainer = style({
@@ -45,10 +45,6 @@ export const faqAccordionChevronClosed = style([
   },
 ])
 
-export const faqAccordionContent = style({
-  cursor: 'default',
-})
-
 export const faqAccordionCardText = style([
   bodyText,
   {
@@ -69,5 +65,3 @@ export const faqAccordionSources = style({
   fontSize: '14px',
   margin: '0 0 5px',
 })
-
-export const faqAccordionSourceLink = inlineLink

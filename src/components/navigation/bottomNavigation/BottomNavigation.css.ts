@@ -37,7 +37,7 @@ export const bottomNavigationItemLink = style({
 })
 
 export const bottomNavigationItemActive = style({
-  color: colors.primaryActive,
+  color: colors.primary,
 })
 
 export const bottomNavigationItemIcon = style({

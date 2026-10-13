@@ -6,7 +6,6 @@ import TopNavigation from '@/components/navigation/topNavigation/TopNavigation'
 import { useScrollOnNavigate } from '@/hooks/useScrollOnNavigate'
 import { appMain, skipLink } from '@/styles/shared.css'
 import About from '@/pages/about/About'
-import DevErrorTest from '@/pages/devErrorTest/DevErrorTest'
 import Home from '@/pages/home/Home'
 import MapPage from '@/pages/map/MapPage'
 import NotFound from '@/pages/notFound/NotFound'
@@ -37,7 +36,6 @@ function App() {
           <Route path="/map" element={<MapPage />} />
           <Route path="/sources" element={<Sources />} />
           <Route path="/privacy" element={<Privacy />} />
-          {import.meta.env.DEV && <Route path="/dev/error" element={<DevErrorTest />} />}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
