@@ -8,7 +8,7 @@ export const bottomNavigationContainer = style({
   bottom: 0,
   width: '100%',
   borderTop: `1px solid ${colors.border}`,
-  padding: '10px',
+  padding: '10px 10px calc(10px + env(safe-area-inset-bottom))',
   zIndex: 1000,
 
   '@media': {

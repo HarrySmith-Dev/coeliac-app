@@ -12,6 +12,7 @@ import {
   faqAccordionSourceLink,
   faqAccordionSources,
 } from './FaqAccordion.css'
+import ExternalLink from '@/components/externalLink/ExternalLink'
 
 type FaqAccordionProps = {
   title: string
@@ -28,7 +29,7 @@ const FaqAccordion = ({ title, description, listItems, sources }: FaqAccordionPr
 
   return (
     <div className={faqAccordionContainer}>
-      <h2 className={faqAccordionCardHeading}>
+      <h3 className={faqAccordionCardHeading}>
         <button
           type="button"
           className={faqAccordionHeader}
@@ -44,7 +45,7 @@ const FaqAccordion = ({ title, description, listItems, sources }: FaqAccordionPr
             aria-hidden="true"
           />
         </button>
-      </h2>
+      </h3>
       <div id={contentId} className={faqAccordionContent} hidden={!isOpen}>
         {description && <p className={faqAccordionCardText}>{description}</p>}
         {listItems && (
@@ -60,14 +61,9 @@ const FaqAccordion = ({ title, description, listItems, sources }: FaqAccordionPr
             {sources.map((source, index) => (
               <span key={source.url}>
                 {index > 0 && ', '}
-                <a
-                  href={source.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={faqAccordionSourceLink}
-                >
+                <ExternalLink href={source.url} className={faqAccordionSourceLink}>
                   {source.publisher}: {source.title}
-                </a>
+                </ExternalLink>
               </span>
             ))}
           </p>

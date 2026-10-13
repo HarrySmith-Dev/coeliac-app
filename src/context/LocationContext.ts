@@ -8,6 +8,7 @@ type LocationContextValue = {
   searchCentre: LocationCoordinates | null
   mapFocus: MapFocus | null
   isRequestingLocation: boolean
+  locationError: string | null
   requestLocation: () => void
   searchArea: (centre: LocationCoordinates) => void
 }

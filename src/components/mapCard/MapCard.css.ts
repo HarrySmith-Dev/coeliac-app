@@ -1,13 +1,14 @@
 import { style } from '@vanilla-extract/css'
 import { desktopBreakpoint } from '@/styles/global.css'
+import { actionLink } from '@/styles/shared.css'
 import { colors, fonts } from '@/styles/tokens'
 
-export const mapCardLink = style({
-  color: colors.primary,
-  textDecoration: 'none',
-  fontFamily: fonts.body,
-  fontSize: '14px',
-})
+export const mapCardLink = style([
+  actionLink,
+  {
+    fontSize: '14px',
+  },
+])
 
 export const mapCardContainer = style({
   minWidth: 0,
@@ -35,6 +36,16 @@ export const mapCardMapFullPage = style([
     minHeight: '400px',
   },
 ])
+
+export const mapCardActions = style({
+  display: 'flex',
+  flexShrink: 0,
+  gap: '16px',
+})
+
+export const mapCardMapArea = style({
+  position: 'relative',
+})
 
 export const mapCardHeader = style({
   display: 'flex',
@@ -64,7 +75,7 @@ export const mapCardRetry = style({
 export const placePopupName = style({
   fontFamily: fonts.heading,
   fontSize: '16px',
-  fontWeight: 'bold',
+  fontWeight: 600,
   margin: '0 0 4px',
 })
 

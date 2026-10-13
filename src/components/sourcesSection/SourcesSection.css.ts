@@ -1,22 +1,6 @@
 import { style } from '@vanilla-extract/css'
-import { bodyText, headingText } from '@/styles/shared.css'
+import { inlineLink } from '@/styles/shared.css'
 import { colors, fonts } from '@/styles/tokens'
-
-export const sourcesSectionHeading = style([
-  headingText,
-  {
-    color: colors.text,
-    margin: '0 0 15px',
-  },
-])
-
-export const sourcesSectionText = style([
-  bodyText,
-  {
-    color: colors.textMuted,
-    margin: '0 0 15px',
-  },
-])
 
 export const sourcesSectionList = style({
   fontFamily: fonts.body,
@@ -29,9 +13,7 @@ export const sourcesSectionItem = style({
   margin: '0 0 8px',
 })
 
-export const sourcesSectionLink = style({
-  color: colors.primary,
-})
+export const sourcesSectionLink = inlineLink
 
 export const sourcesSectionReviewed = style({
   color: colors.textMuted,

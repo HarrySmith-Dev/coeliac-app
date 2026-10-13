@@ -1,29 +1,14 @@
 import { style } from '@vanilla-extract/css'
-import { headingText } from '@/styles/shared.css'
-import { colors, fonts } from '@/styles/tokens'
+import { actionLink } from '@/styles/shared.css'
 
 export const faqSection = style({
   scrollMarginTop: '20px',
 })
 
-export const faqSectionHeading = style([
-  headingText,
+export const faqSectionLink = style([
+  actionLink,
   {
-    color: colors.text,
-    margin: 0,
+    fontSize: '16px',
+    margin: '20px 0 0',
   },
 ])
-
-export const faqSectionLink = style({
-  color: colors.primary,
-  display: 'inline-block',
-  fontFamily: fonts.body,
-  fontSize: '16px',
-  fontWeight: 600,
-  margin: '20px 0 0',
-  textDecoration: 'none',
-
-  ':hover': {
-    textDecoration: 'underline',
-  },
-})

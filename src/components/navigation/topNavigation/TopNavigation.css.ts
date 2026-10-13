@@ -29,10 +29,16 @@ export const topNavigationContentContainer = style({
 
 export const topNavigationTitle = style({
   color: colors.surface,
+  display: 'inline-block',
   fontFamily: fonts.heading,
   fontSize: '20px',
-  fontWeight: '500',
+  fontWeight: 500,
   margin: '0 0 10px',
+  textDecoration: 'none',
+
+  ':focus-visible': {
+    outlineColor: colors.surface,
+  },
 
   '@media': {
     [desktopBreakpoint]: {
@@ -55,9 +61,17 @@ export const topNavigationSubtitle = style({
   },
 })
 
-export const topNavigationLinkList = style({
+export const topNavigationNav = style({
   display: 'none',
 
+  '@media': {
+    [desktopBreakpoint]: {
+      display: 'block',
+    },
+  },
+})
+
+export const topNavigationLinkList = style({
   '@media': {
     [desktopBreakpoint]: {
       listStyle: 'none',
@@ -75,8 +89,14 @@ export const topNavigationLink = style({
   fontFamily: fonts.body,
   fontSize: '16px',
 
+  textUnderlineOffset: '6px',
+
   ':hover': {
-    color: colors.accent,
+    textDecoration: 'underline',
+  },
+
+  ':focus-visible': {
+    outlineColor: colors.surface,
   },
 
   '@media': {
@@ -87,5 +107,7 @@ export const topNavigationLink = style({
 })
 
 export const topNavigationItemActive = style({
-  color: colors.accent,
+  fontWeight: 600,
+  textDecoration: 'underline',
+  textDecorationThickness: '2px',
 })

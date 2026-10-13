@@ -31,7 +31,7 @@ export const statPillTone = styleVariants(
 export const statPillHeader = style({
   color: headingColor,
   fontSize: '18px',
-  fontWeight: 'bold',
+  fontWeight: 600,
   margin: '0 0 2px',
 })
 
@@ -42,8 +42,8 @@ export const statPillText = style({
 
 export const statPillSource = style({
   color: 'inherit',
-  fontSize: '11px',
+  fontSize: '12px',
   margin: '4px 0 0',
-  opacity: 0.8,
   textDecoration: 'underline',
+  textUnderlineOffset: '2px',
 })

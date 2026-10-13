@@ -10,6 +10,15 @@ const devLocationOverride: LocationCoordinates | null = import.meta.env.DEV
 
 const savedSearchCentre = loadSearchCentre()
 
+const locationErrors = {
+  unsupported:
+    "Your browser can't share your location. You can still drag the map and use Search this area.",
+  denied:
+    'Location access was denied. You can still drag the map and use Search this area, or allow location in your browser settings.',
+  unavailable:
+    "We couldn't find your location. Try again, or drag the map and use Search this area.",
+}
+
 const toCoordinates = ({ coords }: GeolocationPosition): LocationCoordinates =>
   devLocationOverride ?? [coords.latitude, coords.longitude]
 
@@ -20,6 +29,7 @@ const LocationProvider = ({ children }: { children: ReactNode }) => {
   )
   const [mapFocus, setMapFocus] = useState<MapFocus | null>(null)
   const [isRequestingLocation, setIsRequestingLocation] = useState(false)
+  const [locationError, setLocationError] = useState<string | null>(null)
 
   const showUserLocation = useCallback((position: GeolocationPosition) => {
     const coordinates = toCoordinates(position)
@@ -60,21 +70,37 @@ const LocationProvider = ({ children }: { children: ReactNode }) => {
   }, [searchCentre])
 
   const requestLocation = () => {
-    if (!('geolocation' in navigator) || isRequestingLocation) {
+    if (!('geolocation' in navigator)) {
+      setLocationError(locationErrors.unsupported)
       return
     }
 
+    if (isRequestingLocation) {
+      return
+    }
+
+    setLocationError(null)
     setIsRequestingLocation(true)
     navigator.geolocation.getCurrentPosition(
       (position) => {
         showUserLocation(position)
         setIsRequestingLocation(false)
       },
-      () => {
+      (error) => {
+        setLocationError(
+          error.code === error.PERMISSION_DENIED
+            ? locationErrors.denied
+            : locationErrors.unavailable,
+        )
         setIsRequestingLocation(false)
       },
       { enableHighAccuracy: false, maximumAge: 300000, timeout: 10000 },
     )
+  }
+
+  const searchArea = (centre: LocationCoordinates) => {
+    setLocationError(null)
+    setSearchCentre(centre)
   }
 
   return (
@@ -84,8 +110,9 @@ const LocationProvider = ({ children }: { children: ReactNode }) => {
         searchCentre,
         mapFocus,
         isRequestingLocation,
+        locationError,
         requestLocation,
-        searchArea: setSearchCentre,
+        searchArea,
       }}
     >
       {children}

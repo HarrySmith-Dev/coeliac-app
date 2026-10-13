@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
+import { SITE_NAME } from '@/constants/site'
 import { navLinks } from '@/data/navigation'
 import {
   topNavigationContainer,
@@ -6,6 +7,7 @@ import {
   topNavigationItemActive,
   topNavigationLink,
   topNavigationLinkList,
+  topNavigationNav,
   topNavigationSubtitle,
   topNavigationTitle,
 } from './TopNavigation.css'
@@ -13,25 +15,29 @@ import {
 const TopNavigation = () => {
   return (
     <header className={topNavigationContainer}>
-      <nav className={topNavigationContentContainer}>
-        <h1 className={topNavigationTitle}>Gluten Free & Me</h1>
+      <div className={topNavigationContentContainer}>
+        <Link to="/" className={topNavigationTitle}>
+          {SITE_NAME}
+        </Link>
         <p className={topNavigationSubtitle}>Understanding coeliac disease</p>
-        <ul className={topNavigationLinkList}>
-          {navLinks.map((link) => (
-            <li key={link.path}>
-              <NavLink
-                to={link.path}
-                end={link.path === '/'}
-                className={({ isActive }) =>
-                  `${topNavigationLink} ${isActive ? topNavigationItemActive : ''}`
-                }
-              >
-                {link.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </nav>
+        <nav aria-label="Main" className={topNavigationNav}>
+          <ul className={topNavigationLinkList}>
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                <NavLink
+                  to={link.path}
+                  end={link.path === '/'}
+                  className={({ isActive }) =>
+                    `${topNavigationLink} ${isActive ? topNavigationItemActive : ''}`
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </header>
   )
 }

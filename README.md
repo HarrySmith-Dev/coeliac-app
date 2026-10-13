@@ -76,12 +76,25 @@ Places come from the public [Overpass API](https://overpass-api.de), which searc
 
 - keeps the search radius small (1 km)
 - only searches when you ask it to (Near Me or Search this area)
+- gives up on any request that takes longer than 20 seconds
 - retries failed requests with a delay
 - caches results for 24 hours in `localStorage`
 
 Coverage depends on what volunteers have tagged, so some gluten-free-friendly places will be missing. You can improve the data for everyone by [adding them to OpenStreetMap](https://www.openstreetmap.org/).
 
+## Deployment
+
+The app is deployed on [Vercel](https://vercel.com). Import the repository and Vercel detects the Vite setup automatically: the build command is `yarn build` and the output directory is `dist`.
+
+`vercel.json` configures:
+
+- **Routing:** every path serves `index.html`, so links like `/about` work when opened directly or refreshed.
+- **Security headers:** a Content Security Policy that only allows the app's own files, OpenStreetMap tiles and the Overpass API, plus `X-Content-Type-Options`, `Referrer-Policy` and a `Permissions-Policy` that only allows location access.
+- **Caching:** files in `/assets` have hashed names, so browsers cache them for a year.
+
+If you add a new external service (for example a different map tile provider), add its domain to the Content Security Policy in `vercel.json`, or the browser will block it.
+
 ## Data and attribution
 
 - Map tiles and place data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), available under the Open Database License.
-- Health information is sourced from the [NHS](https://www.nhs.uk/conditions/coeliac-disease/), [Coeliac UK](https://www.coeliac.org.uk/) and [GOV.UK](https://www.gov.uk/understanding-food-labelling/allergen-labelling). The full list is on the app's About page.
+- Health information is sourced from the [NHS](https://www.nhs.uk/conditions/coeliac-disease/), [Coeliac UK](https://www.coeliac.org.uk/) and [GOV.UK](https://www.gov.uk/understanding-food-labelling/allergen-labelling). The full list is on the app's Sources page.

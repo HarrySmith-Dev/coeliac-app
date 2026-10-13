@@ -10,7 +10,7 @@ import { navLinks } from '@/data/navigation'
 
 const BottomNavigation = () => {
   return (
-    <div className={bottomNavigationContainer}>
+    <nav aria-label="Main" className={bottomNavigationContainer}>
       <ul className={bottomNavigationList}>
         {navLinks.map((link) => (
           <li key={link.path}>
@@ -31,7 +31,7 @@ const BottomNavigation = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </nav>
   )
 }
 
