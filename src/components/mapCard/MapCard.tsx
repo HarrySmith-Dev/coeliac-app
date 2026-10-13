@@ -9,9 +9,13 @@ import type { MapFocus } from '@/context/LocationContext'
 import { useUserLocation } from '@/hooks/useUserLocation'
 import {
   DEFAULT_LOCATION,
+  MAP_BOUNDS,
+  MAP_MAX_ZOOM,
+  MAP_MIN_ZOOM,
   MIN_SEARCH_ZOOM,
   NEARBY_ZOOM,
   SEARCH_RADIUS_METRES,
+  TILE_KEEP_BUFFER,
 } from '@/constants/map'
 import { useGlutenFreePlaces } from '@/hooks/useGlutenFreePlaces'
 import {
@@ -23,6 +27,7 @@ import {
   mapCardMapFullPage,
   mapCardRetry,
 } from './MapCard.css'
+import MapDataNotice from './MapDataNotice'
 import PlaceList from './PlaceList'
 import PlaceMarker from './PlaceMarker'
 import SearchAreaControl from './SearchAreaControl'
@@ -121,10 +126,15 @@ const MapCard = ({ fullPage = false }: MapCardProps) => {
           className={fullPage ? mapCardMapFullPage : mapCardMap}
           center={searchCentre ?? DEFAULT_LOCATION}
           zoom={searchCentre ? NEARBY_ZOOM : MIN_SEARCH_ZOOM}
+          minZoom={MAP_MIN_ZOOM}
+          maxZoom={MAP_MAX_ZOOM}
+          maxBounds={MAP_BOUNDS}
+          maxBoundsViscosity={1}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+            keepBuffer={TILE_KEEP_BUFFER}
           />
           <MapFocusUpdater focus={mapFocus} />
           <SearchAreaControl />
@@ -161,6 +171,7 @@ const MapCard = ({ fullPage = false }: MapCardProps) => {
           />
         )}
       </div>
+      <MapDataNotice />
     </article>
   )
 }

@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   check:
-    name: Format, lint and build
+    name: Format, lint, test and build
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -36,6 +36,9 @@ jobs:
 
       - name: Lint
         run: yarn lint
+
+      - name: Test
+        run: yarn test
 
       - name: Type-check and build
         run: yarn build

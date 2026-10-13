@@ -18,6 +18,13 @@ Website links come from community-edited OpenStreetMap data, so they're cleaned 
 
 Coverage depends on what volunteers have tagged, so some gluten-free-friendly places will be missing. You can improve the data for everyone by [adding them to OpenStreetMap](https://www.openstreetmap.org/).
 
+Map tiles come straight from OpenStreetMap's tile servers, which are free but have no usage dashboard or quota and can block sites they consider heavy users. To keep the number of tiles each visit loads low, the map:
+
+- can't be panned outside the UK, or zoomed out past the whole UK (zoom 6) or in past street level (zoom 18)
+- keeps only one screen's worth of tiles loaded around the visible area, instead of Leaflet's default of two
+
+If traffic grows, switch to a tile provider with an API key and a monthly quota (see the note on the Content Security Policy below).
+
 ## Location and search area
 
 `LocationProvider` keeps two separate locations:
@@ -73,5 +80,7 @@ If you add a new external service (for example a different map tile provider), a
 | `yarn build`        | Type-check and build for production into `dist/` |
 | `yarn preview`      | Serve the production build locally               |
 | `yarn lint`         | Run ESLint                                       |
+| `yarn test`         | Run the tests once                               |
+| `yarn test:watch`   | Run the tests and re-run them on changes         |
 | `yarn format`       | Format all files with Prettier                   |
 | `yarn format:check` | Check formatting without changing files          |

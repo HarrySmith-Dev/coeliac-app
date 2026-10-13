@@ -4,7 +4,7 @@ import { fetchGlutenFreePlaces, OverpassError } from '@/api/overpass'
 import { PLACES_CACHE_TIME, PLACES_MAX_ATTEMPTS, PLACES_QUERY_KEY } from '@/constants/places'
 import { roundCoordinates } from '@/utils/coordinates'
 
-const isRetryable = (error: Error) =>
+export const isRetryable = (error: Error) =>
   !(error instanceof OverpassError) ||
   error.status === undefined ||
   error.status === 429 ||
