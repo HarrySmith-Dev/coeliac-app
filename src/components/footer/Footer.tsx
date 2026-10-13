@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { footer, footerDisclaimer, footerLink, footerLinks } from './Footer.css'
+import { footer, footerDisclaimer, footerLinks } from './Footer.css'
+import { smallActionLink } from '@/styles/shared.css'
 
 const Footer = () => {
   return (
@@ -7,12 +8,12 @@ const Footer = () => {
       <nav aria-label="Footer">
         <ul className={footerLinks}>
           <li>
-            <Link to="/sources" className={footerLink}>
+            <Link to="/sources" className={smallActionLink}>
               Sources
             </Link>
           </li>
           <li>
-            <Link to="/privacy" className={footerLink}>
+            <Link to="/privacy" className={smallActionLink}>
               Privacy
             </Link>
           </li>

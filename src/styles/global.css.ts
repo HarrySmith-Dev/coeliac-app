@@ -34,6 +34,5 @@ globalStyle('*, *::before, *::after', {
   boxSizing: 'border-box',
 })
 
-export const mobileBreakpoint = `screen and (min-width: 600px)`
 export const tabletBreakpoint = `screen and (min-width: 768px)`
 export const desktopBreakpoint = `screen and (min-width: 1024px)`

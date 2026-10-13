@@ -161,6 +161,27 @@ export const actionLink = style({
   },
 })
 
+export const smallActionLink = style([
+  actionLink,
+  {
+    fontSize: '14px',
+  },
+])
+
+export const pageText = style([
+  bodyText,
+  {
+    margin: '0 0 20px',
+  },
+])
+
+export const smallMutedText = style({
+  color: colors.textMuted,
+  fontFamily: fonts.body,
+  fontSize: '14px',
+  margin: 0,
+})
+
 export const primaryButton = style({
   alignItems: 'center',
   backgroundColor: colors.accentStrong,

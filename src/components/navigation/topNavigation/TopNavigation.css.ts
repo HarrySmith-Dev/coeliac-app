@@ -22,7 +22,6 @@ export const topNavigationContentContainer = style({
     [desktopBreakpoint]: {
       flexDirection: 'row',
       gap: '150px',
-      boxSizing: 'border-box',
     },
   },
 })

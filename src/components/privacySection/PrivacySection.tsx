@@ -1,11 +1,7 @@
 import ExternalLink from '@/components/externalLink/ExternalLink'
 import { privacyLinks, privacyPoints } from '@/data/privacy'
-import { pageHeading, sectionText } from '@/styles/shared.css'
-import {
-  privacySectionLink,
-  privacySectionLinks,
-  privacySectionPointTitle,
-} from './PrivacySection.css'
+import { inlineLink, pageHeading, sectionText } from '@/styles/shared.css'
+import { privacySectionLinks, privacySectionPointTitle } from './PrivacySection.css'
 
 const PrivacySection = () => {
   return (
@@ -22,7 +18,7 @@ const PrivacySection = () => {
         {privacyLinks.map((link, index) => (
           <span key={link.url}>
             {index > 0 && ', '}
-            <ExternalLink href={link.url} className={privacySectionLink}>
+            <ExternalLink href={link.url} className={inlineLink}>
               {link.publisher}: {link.title}
             </ExternalLink>
           </span>

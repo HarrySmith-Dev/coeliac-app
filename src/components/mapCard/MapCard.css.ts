@@ -1,14 +1,6 @@
 import { style } from '@vanilla-extract/css'
 import { desktopBreakpoint } from '@/styles/global.css'
-import { actionLink } from '@/styles/shared.css'
 import { colors, fonts } from '@/styles/tokens'
-
-export const mapCardLink = style([
-  actionLink,
-  {
-    fontSize: '14px',
-  },
-])
 
 export const mapCardContainer = style({
   minWidth: 0,
@@ -59,13 +51,6 @@ export const mapCardHeader = style({
   margin: '0 0 10px',
 })
 
-export const mapCardStatus = style({
-  color: colors.textMuted,
-  fontFamily: fonts.body,
-  fontSize: '14px',
-  margin: 0,
-})
-
 export const mapCardRetry = style({
   background: 'none',
   border: 'none',
@@ -93,8 +78,6 @@ export const placePopupDetail = style({
   color: colors.textMuted,
   margin: '0 0 4px',
 })
-
-export const placePopupCuisine = style([placePopupDetail, { textTransform: 'capitalize' }])
 
 export const searchAreaControl = style({
   position: 'absolute',

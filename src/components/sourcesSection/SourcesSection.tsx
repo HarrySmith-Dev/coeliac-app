@@ -1,12 +1,7 @@
 import { contentLastReviewed } from '@/data/coeliacContent'
 import { sources } from '@/data/sources'
-import { pageHeading, sectionText } from '@/styles/shared.css'
-import {
-  sourcesSectionItem,
-  sourcesSectionLink,
-  sourcesSectionList,
-  sourcesSectionReviewed,
-} from './SourcesSection.css'
+import { inlineLink, pageHeading, sectionText, smallMutedText } from '@/styles/shared.css'
+import { sourcesSectionItem, sourcesSectionList } from './SourcesSection.css'
 import ExternalLink from '@/components/externalLink/ExternalLink'
 
 const SourcesSection = () => {
@@ -20,13 +15,13 @@ const SourcesSection = () => {
       <ul className={sourcesSectionList}>
         {Object.values(sources).map((source) => (
           <li key={source.url} className={sourcesSectionItem}>
-            <ExternalLink href={source.url} className={sourcesSectionLink}>
+            <ExternalLink href={source.url} className={inlineLink}>
               {source.publisher}: {source.title}
             </ExternalLink>
           </li>
         ))}
       </ul>
-      <p className={sourcesSectionReviewed}>Last reviewed: {contentLastReviewed}</p>
+      <p className={smallMutedText}>Last reviewed: {contentLastReviewed}</p>
     </section>
   )
 }

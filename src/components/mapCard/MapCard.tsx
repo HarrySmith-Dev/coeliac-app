@@ -3,7 +3,7 @@ import 'leaflet/dist/leaflet.css'
 import { useEffect, useId, useRef, useState } from 'react'
 import { Circle, CircleMarker, MapContainer, TileLayer, useMap } from 'react-leaflet'
 import { Link } from 'react-router-dom'
-import { cardContainer } from '@/styles/shared.css'
+import { cardContainer, smallActionLink, smallMutedText } from '@/styles/shared.css'
 import { colors } from '@/styles/tokens'
 import type { MapFocus } from '@/context/LocationContext'
 import { useUserLocation } from '@/hooks/useUserLocation'
@@ -17,13 +17,11 @@ import { useGlutenFreePlaces } from '@/hooks/useGlutenFreePlaces'
 import {
   mapCardContainer,
   mapCardHeader,
-  mapCardLink,
   mapCardActions,
   mapCardMap,
   mapCardMapArea,
   mapCardMapFullPage,
   mapCardRetry,
-  mapCardStatus,
 } from './MapCard.css'
 import PlaceList from './PlaceList'
 import PlaceMarker from './PlaceMarker'
@@ -95,14 +93,14 @@ const MapCard = ({ fullPage = false }: MapCardProps) => {
   return (
     <article className={`${cardContainer} ${mapCardContainer}`}>
       <div className={mapCardHeader}>
-        <p className={mapCardStatus} aria-live="polite">
+        <p className={smallMutedText} aria-live="polite">
           {renderStatus()}
         </p>
         <div className={mapCardActions}>
           {hasPlaces && (
             <button
               type="button"
-              className={mapCardLink}
+              className={smallActionLink}
               aria-expanded={isListOpen}
               aria-controls={listId}
               onClick={() => setIsListOpen((isOpen) => !isOpen)}
@@ -111,7 +109,7 @@ const MapCard = ({ fullPage = false }: MapCardProps) => {
             </button>
           )}
           {!fullPage && (
-            <Link to="/map" className={mapCardLink}>
+            <Link to="/map" className={smallActionLink}>
               View full map
             </Link>
           )}

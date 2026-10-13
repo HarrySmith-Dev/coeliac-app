@@ -1,5 +1,4 @@
 import { style } from '@vanilla-extract/css'
-import { actionLink } from '@/styles/shared.css'
 import { colors, fonts } from '@/styles/tokens'
 
 export const placeList = style({
@@ -56,10 +55,3 @@ export const placeListLinks = style({
   flexWrap: 'wrap',
   gap: '16px',
 })
-
-export const placeListShowButton = style([
-  actionLink,
-  {
-    fontSize: '14px',
-  },
-])
