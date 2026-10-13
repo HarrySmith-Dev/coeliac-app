@@ -13,7 +13,6 @@ import '@fontsource/inter/latin-400.css'
 import '@fontsource/inter/latin-500.css'
 import '@fontsource/inter/latin-600.css'
 import './styles/global.css.ts'
-import 'leaflet/dist/leaflet.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
