@@ -51,6 +51,10 @@ export const mapCardHeader = style({
   margin: '0 0 10px',
 })
 
+export const mapDataNotice = style({
+  marginTop: '10px',
+})
+
 export const mapCardRetry = style({
   background: 'none',
   border: 'none',

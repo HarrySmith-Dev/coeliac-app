@@ -10,6 +10,7 @@ import {
   mapCardMapFullPage,
   mapCardMapPlaceholder,
 } from './MapCard.css'
+import MapDataNotice from './MapDataNotice'
 
 const MapCard = lazy(() => import('./MapCard'))
 
@@ -32,6 +33,7 @@ const MapCardPlaceholder = ({ fullPage = false }: MapCardProps) => {
         className={`${fullPage ? mapCardMapFullPage : mapCardMap} ${mapCardMapPlaceholder}`}
         aria-hidden="true"
       />
+      <MapDataNotice />
     </article>
   )
 }
