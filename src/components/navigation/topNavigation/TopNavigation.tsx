@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { SITE_NAME } from '@/constants/site'
 import { navLinks } from '@/data/navigation'
 import {
@@ -16,7 +16,9 @@ const TopNavigation = () => {
   return (
     <header className={topNavigationContainer}>
       <div className={topNavigationContentContainer}>
-        <h1 className={topNavigationTitle}>{SITE_NAME}</h1>
+        <Link to="/" className={topNavigationTitle}>
+          {SITE_NAME}
+        </Link>
         <p className={topNavigationSubtitle}>Understanding coeliac disease</p>
         <nav aria-label="Main" className={topNavigationNav}>
           <ul className={topNavigationLinkList}>

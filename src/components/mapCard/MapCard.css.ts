@@ -1,21 +1,14 @@
 import { style } from '@vanilla-extract/css'
 import { desktopBreakpoint } from '@/styles/global.css'
+import { actionLink } from '@/styles/shared.css'
 import { colors, fonts } from '@/styles/tokens'
 
-export const mapCardLink = style({
-  background: 'none',
-  border: 'none',
-  color: colors.primary,
-  cursor: 'pointer',
-  fontFamily: fonts.body,
-  fontSize: '14px',
-  padding: 0,
-  textDecoration: 'none',
-
-  ':hover': {
-    textDecoration: 'underline',
+export const mapCardLink = style([
+  actionLink,
+  {
+    fontSize: '14px',
   },
-})
+])
 
 export const mapCardContainer = style({
   minWidth: 0,

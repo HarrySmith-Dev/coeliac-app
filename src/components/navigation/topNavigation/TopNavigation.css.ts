@@ -29,10 +29,16 @@ export const topNavigationContentContainer = style({
 
 export const topNavigationTitle = style({
   color: colors.surface,
+  display: 'inline-block',
   fontFamily: fonts.heading,
   fontSize: '20px',
-  fontWeight: '500',
+  fontWeight: 500,
   margin: '0 0 10px',
+  textDecoration: 'none',
+
+  ':focus-visible': {
+    outlineColor: colors.surface,
+  },
 
   '@media': {
     [desktopBreakpoint]: {
@@ -87,6 +93,10 @@ export const topNavigationLink = style({
 
   ':hover': {
     textDecoration: 'underline',
+  },
+
+  ':focus-visible': {
+    outlineColor: colors.surface,
   },
 
   '@media': {

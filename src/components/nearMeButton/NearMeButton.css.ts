@@ -1,31 +1,17 @@
 import { style } from '@vanilla-extract/css'
 import { desktopBreakpoint } from '@/styles/global.css'
-import { colors, fonts } from '@/styles/tokens'
+import { primaryButton } from '@/styles/shared.css'
 
-export const nearMeButtonContainer = style({
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  padding: '15px',
-  backgroundColor: colors.accentStrong,
-  border: 'none',
-  borderRadius: '15px',
-  color: colors.surface,
-  fontSize: '18px',
-  fontFamily: fonts.heading,
-  cursor: 'pointer',
-  gap: '10px',
-
-  ':hover': {
-    backgroundColor: colors.accentStrongHover,
-  },
-
-  '@media': {
-    [desktopBreakpoint]: {
-      display: 'none',
+export const nearMeButtonContainer = style([
+  primaryButton,
+  {
+    '@media': {
+      [desktopBreakpoint]: {
+        display: 'none',
+      },
     },
   },
-})
+])
 
 export const nearMeButtonIcon = style({
   width: '20px',

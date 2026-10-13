@@ -1,20 +1,19 @@
 import { contentLastReviewed } from '@/data/coeliacContent'
 import { sources } from '@/data/sources'
+import { pageHeading, sectionText } from '@/styles/shared.css'
 import {
-  sourcesSectionHeading,
   sourcesSectionItem,
   sourcesSectionLink,
   sourcesSectionList,
   sourcesSectionReviewed,
-  sourcesSectionText,
 } from './SourcesSection.css'
 import ExternalLink from '@/components/externalLink/ExternalLink'
 
 const SourcesSection = () => {
   return (
     <section id="sources">
-      <h2 className={sourcesSectionHeading}>Sources</h2>
-      <p className={sourcesSectionText}>
+      <h1 className={pageHeading}>Sources</h1>
+      <p className={sectionText}>
         The information on this site is general guidance, not medical advice. If you think you might
         have coeliac disease, or have questions about your diet, speak to your GP or a dietitian.
       </p>

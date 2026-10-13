@@ -1,14 +1,5 @@
 import { style } from '@vanilla-extract/css'
-import { bodyText, headingText } from '@/styles/shared.css'
-import { colors } from '@/styles/tokens'
-
-export const notFoundHeading = style([
-  headingText,
-  {
-    color: colors.text,
-    margin: '0 0 15px',
-  },
-])
+import { actionLink, bodyText } from '@/styles/shared.css'
 
 export const notFoundText = style([
   bodyText,
@@ -17,10 +8,4 @@ export const notFoundText = style([
   },
 ])
 
-export const notFoundLink = style([
-  bodyText,
-  {
-    color: colors.primary,
-    fontWeight: 600,
-  },
-])
+export const notFoundLink = style([bodyText, actionLink])

@@ -1,4 +1,5 @@
 import { SEARCH_RADIUS_METRES } from '@/constants/map'
+import { PLACES_REQUEST_TIMEOUT } from '@/constants/places'
 import type { LocationCoordinates } from '@/types/location'
 import type { GlutenFreeLevel, Place } from '@/types/place'
 import { toSafeUrl } from '@/utils/url'
@@ -71,17 +72,26 @@ export const fetchGlutenFreePlaces = async (
   location: LocationCoordinates,
   signal: AbortSignal,
 ): Promise<Place[]> => {
-  const response = await fetch(OVERPASS_URL, {
-    method: 'POST',
-    body: new URLSearchParams({ data: buildQuery(location) }),
-    signal,
-  })
+  let data: OverpassResponse
 
-  if (!response.ok) {
-    throw new OverpassError(`Overpass request failed (${response.status})`, response.status)
+  try {
+    const response = await fetch(OVERPASS_URL, {
+      method: 'POST',
+      body: new URLSearchParams({ data: buildQuery(location) }),
+      signal: AbortSignal.any([signal, AbortSignal.timeout(PLACES_REQUEST_TIMEOUT)]),
+    })
+
+    if (!response.ok) {
+      throw new OverpassError(`Overpass request failed (${response.status})`, response.status)
+    }
+
+    data = await response.json()
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'TimeoutError') {
+      throw new OverpassError('Overpass request timed out')
+    }
+    throw error
   }
-
-  const data: OverpassResponse = await response.json()
 
   if (data.remark) {
     throw new OverpassError(data.remark)

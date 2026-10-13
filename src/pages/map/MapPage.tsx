@@ -1,5 +1,5 @@
 import MapCard from '@/components/mapCard/MapCard'
-import { pageLayout } from '@/styles/shared.css'
+import { pageLayout, visuallyHidden } from '@/styles/shared.css'
 import { usePageTitle } from '@/hooks/usePageTitle'
 
 const MapPage = () => {
@@ -7,6 +7,7 @@ const MapPage = () => {
 
   return (
     <section className={pageLayout}>
+      <h1 className={visuallyHidden}>Gluten-free places map</h1>
       <MapCard fullPage />
     </section>
   )

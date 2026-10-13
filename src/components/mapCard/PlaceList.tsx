@@ -50,7 +50,7 @@ const PlaceList = ({ id, places, searchCentre, onShowOnMap }: PlaceListProps) =>
               className={placeListShowButton}
               onClick={() => onShowOnMap(place.id)}
             >
-              Show<span className={visuallyHidden}> {place.name}</span> on map
+              Show <span className={visuallyHidden}> {place.name}</span> on map
             </button>
             {place.website && (
               <ExternalLink href={place.website} className={placeListShowButton}>

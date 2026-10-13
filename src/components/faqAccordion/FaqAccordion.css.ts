@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css'
-import { bodyText, headingText } from '@/styles/shared.css'
+import { desktopBreakpoint } from '@/styles/global.css'
+import { bodyText, headingText, inlineLink } from '@/styles/shared.css'
 import { colors, fonts } from '@/styles/tokens'
 
 export const faqAccordionContainer = style({
@@ -8,10 +9,6 @@ export const faqAccordionContainer = style({
   margin: '20px 0 0',
   borderRadius: '15px',
   padding: '20px',
-
-  ':first-child': {
-    margin: '50px 0 0',
-  },
 })
 
 export const faqAccordionHeader = style({
@@ -57,6 +54,12 @@ export const faqAccordionCardText = style([
   {
     color: colors.textMuted,
     margin: '15px 0',
+
+    '@media': {
+      [desktopBreakpoint]: {
+        fontSize: '20px',
+      },
+    },
   },
 ])
 
@@ -67,6 +70,4 @@ export const faqAccordionSources = style({
   margin: '0 0 5px',
 })
 
-export const faqAccordionSourceLink = style({
-  color: colors.primary,
-})
+export const faqAccordionSourceLink = inlineLink

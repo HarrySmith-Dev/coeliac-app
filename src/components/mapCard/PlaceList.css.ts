@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css'
+import { actionLink } from '@/styles/shared.css'
 import { colors, fonts } from '@/styles/tokens'
 
 export const placeList = style({
@@ -22,7 +23,7 @@ export const placeListItem = style({
 export const placeListName = style({
   color: colors.text,
   fontFamily: fonts.heading,
-  fontSize: '17px',
+  fontSize: '18px',
   fontWeight: 600,
   margin: '0 0 4px',
 })
@@ -56,13 +57,9 @@ export const placeListLinks = style({
   gap: '16px',
 })
 
-export const placeListShowButton = style({
-  background: 'none',
-  border: 'none',
-  color: colors.primary,
-  cursor: 'pointer',
-  fontFamily: fonts.body,
-  fontSize: '14px',
-  padding: 0,
-  textDecoration: 'underline',
-})
+export const placeListShowButton = style([
+  actionLink,
+  {
+    fontSize: '14px',
+  },
+])
