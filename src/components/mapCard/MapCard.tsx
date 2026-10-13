@@ -1,4 +1,5 @@
 import type { CircleMarker as LeafletCircleMarker, Map as LeafletMap } from 'leaflet'
+import 'leaflet/dist/leaflet.css'
 import { useEffect, useId, useRef, useState } from 'react'
 import { Circle, CircleMarker, MapContainer, TileLayer, useMap } from 'react-leaflet'
 import { Link } from 'react-router-dom'
@@ -45,7 +46,7 @@ const MapFocusUpdater = ({ focus }: { focus: MapFocus | null }) => {
   return null
 }
 
-type MapCardProps = {
+export type MapCardProps = {
   fullPage?: boolean
 }
 

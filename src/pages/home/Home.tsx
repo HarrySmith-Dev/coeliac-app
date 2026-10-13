@@ -1,6 +1,6 @@
 import FaqSection from '@/components/faqSection/FaqSection'
 import InfoCard from '@/components/infoCard/InfoCard'
-import MapCard from '@/components/mapCard/MapCard'
+import LazyMapCard from '@/components/mapCard/LazyMapCard'
 import NearMeButton from '@/components/nearMeButton/NearMeButton'
 import OverviewStats from '@/components/overviewStats/OverviewStats'
 import { featuredFaqs, homeOverviewDescription, homeOverviewStats } from '@/data/coeliacContent'
@@ -19,7 +19,7 @@ const Home = () => {
           <NearMeButton desktop />
         </InfoCard>
         <NearMeButton />
-        <MapCard />
+        <LazyMapCard />
       </div>
 
       <hr className={sectionDivider} />

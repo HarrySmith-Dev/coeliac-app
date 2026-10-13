@@ -29,6 +29,10 @@ export const mapCardMap = style({
   overflow: 'hidden',
 })
 
+export const mapCardMapPlaceholder = style({
+  backgroundColor: colors.divider,
+})
+
 export const mapCardMapFullPage = style([
   mapCardMap,
   {

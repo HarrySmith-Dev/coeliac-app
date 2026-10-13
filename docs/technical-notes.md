@@ -40,6 +40,15 @@ In development, the app pretends the user is in central London so there are alwa
 
 The error boundary can be tested in development by visiting `/dev/error`.
 
+## Performance
+
+- **Lazy-loaded map.** `LazyMapCard` loads `MapCard` with `React.lazy` and a dynamic `import()`, so Vite splits the map card, Leaflet and Leaflet's CSS into a separate file. Pages without a map (About, Privacy, Sources) never download it, which cuts their JavaScript from 144 KB to 96 KB (gzipped).
+- **No layout shift while the map loads.** The `Suspense` fallback is a placeholder built from the same styles as the real map card, so the page doesn't move when the map arrives.
+- **No background preloading.** Downloading the map file in the background after page load was tested and made content pages slower in Lighthouse's simulated mobile test, so the map is only downloaded when a page needs it. The trade-off is a brief "Loading map..." placeholder the first time someone opens a page with a map.
+- **Fonts.** Inter and Fraunces are self-hosted (Latin characters only), and the three fonts visible on first load are preloaded in `index.html` so text doesn't reflow when they arrive.
+
+Lighthouse (mobile, production build): 99 on About, Privacy and Sources, 94 on Home, around 84 on the Map page, where the largest content is the map tiles loaded from OpenStreetMap. Accessibility is 100 on every page.
+
 ## Deployment
 
 The app is deployed on [Vercel](https://vercel.com), which detects the Vite setup automatically (build command `yarn build`, output directory `dist`).
