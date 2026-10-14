@@ -2,7 +2,7 @@
 
 **Live site: [glutenfreeandme.io](https://glutenfreeandme.io)**
 
-![Gluten Free & Me showing the map of nearby gluten-free places and the FAQ](docs/screenshot.png)
+![Gluten Free & Me: find gluten-free food near you and learn about coeliac disease](public/og-image.png)
 
 A web app for people living with coeliac disease. It finds restaurants, cafes and takeaways near you that offer gluten-free food, and explains the condition in plain English with information from the NHS and Coeliac UK.
 
