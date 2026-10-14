@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Footer from '@/components/footer/Footer'
 import BottomNavigation from '@/components/navigation/bottomNavigation/BottomNavigation'
 import TopNavigation from '@/components/navigation/topNavigation/TopNavigation'
+import { useCanonicalUrl } from '@/hooks/useCanonicalUrl'
 import { useScrollOnNavigate } from '@/hooks/useScrollOnNavigate'
 import { appMain, skipLink } from '@/styles/shared.css'
 import About from '@/pages/about/About'
@@ -14,6 +15,7 @@ import Sources from '@/pages/sources/Sources'
 
 function App() {
   useScrollOnNavigate()
+  useCanonicalUrl()
   const mainRef = useRef<HTMLElement>(null)
 
   return (

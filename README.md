@@ -1,6 +1,6 @@
 # Gluten Free & Me
 
-**Live site: TODO add Vercel URL**
+**Live site: [coeliac-app-pi.vercel.app](https://coeliac-app-pi.vercel.app)**
 
 ![Gluten Free & Me showing the map of nearby gluten-free places and the FAQ](docs/screenshot.png)
 
@@ -33,7 +33,7 @@ More detail is in [docs/technical-notes.md](docs/technical-notes.md).
 
 ## Running it locally
 
-You'll need Node.js 20.19+ or 22.12+ and Yarn.
+You'll need Node.js 24 (see `.nvmrc`) and Yarn.
 
 ```bash
 yarn install
