@@ -17,7 +17,7 @@ import {
   SEARCH_RADIUS_METRES,
   TILE_KEEP_BUFFER,
 } from '@/constants/map'
-import { useGlutenFreePlaces } from '@/hooks/useGlutenFreePlaces'
+import { isBlocked, useGlutenFreePlaces } from '@/hooks/useGlutenFreePlaces'
 import {
   mapCardContainer,
   mapCardHeader,
@@ -55,7 +55,7 @@ export type MapCardProps = {
 
 const MapCard = ({ fullPage = false }: MapCardProps) => {
   const { userLocation, searchCentre, mapFocus, locationError } = useUserLocation()
-  const { data: places, isFetching, isError, refetch } = useGlutenFreePlaces()
+  const { data: places, error, isFetching, isError, refetch } = useGlutenFreePlaces()
   const [map, setMap] = useState<LeafletMap | null>(null)
   const markers = useRef(new Map<string, LeafletCircleMarker>())
   const [isListOpen, setIsListOpen] = useState(false)
@@ -78,6 +78,9 @@ const MapCard = ({ fullPage = false }: MapCardProps) => {
     }
     if (isFetching) {
       return 'Searching for gluten-free spots...'
+    }
+    if (isBlocked(error)) {
+      return 'The place search service is unavailable right now. Please try again later.'
     }
     if (isError) {
       return (
