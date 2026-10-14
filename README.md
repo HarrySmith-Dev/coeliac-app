@@ -64,3 +64,7 @@ src/
 - Map tiles and place data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), available under the Open Database License.
 - Health information is sourced from the [NHS](https://www.nhs.uk/conditions/coeliac-disease/), [Coeliac UK](https://www.coeliac.org.uk/) and [GOV.UK](https://www.gov.uk/understanding-food-labelling/allergen-labelling). The full list is on the app's Sources page.
 - The information in the app is general guidance, not medical advice.
+
+## Licence
+
+© 2026 Harry Smith. All rights reserved. This is a personal project, and the code is public so others can see how it was built. Please don't reuse it without asking.
