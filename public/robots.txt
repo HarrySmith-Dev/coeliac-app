@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://coeliac-app-pi.vercel.app/sitemap.xml
+Sitemap: https://glutenfreeandme.io/sitemap.xml

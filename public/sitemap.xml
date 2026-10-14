@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://coeliac-app-pi.vercel.app/</loc></url>
-  <url><loc>https://coeliac-app-pi.vercel.app/about</loc></url>
-  <url><loc>https://coeliac-app-pi.vercel.app/map</loc></url>
-  <url><loc>https://coeliac-app-pi.vercel.app/sources</loc></url>
-  <url><loc>https://coeliac-app-pi.vercel.app/privacy</loc></url>
+  <url><loc>https://glutenfreeandme.io/</loc></url>
+  <url><loc>https://glutenfreeandme.io/about</loc></url>
+  <url><loc>https://glutenfreeandme.io/map</loc></url>
+  <url><loc>https://glutenfreeandme.io/sources</loc></url>
+  <url><loc>https://glutenfreeandme.io/privacy</loc></url>
 </urlset>
