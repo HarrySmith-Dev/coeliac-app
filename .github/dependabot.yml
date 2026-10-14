@@ -7,6 +7,14 @@ updates:
       day: monday
       timezone: Europe/London
     open-pull-requests-limit: 5
+    cooldown:
+      default-days: 7
+      semver-patch-days: 3
+      semver-minor-days: 7
+      semver-major-days: 14
+    ignore:
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
     groups:
       production:
         dependency-type: production
@@ -21,6 +29,8 @@ updates:
       interval: weekly
       day: monday
       timezone: Europe/London
+    cooldown:
+      default-days: 7
     groups:
       actions:
         patterns: ['*']
