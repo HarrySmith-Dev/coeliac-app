@@ -8,6 +8,7 @@ const NotFound = () => {
 
   return (
     <section className={pageLayout}>
+      <meta name="robots" content="noindex" />
       <h1 className={pageHeading}>Page not found</h1>
       <p className={pageText}>Sorry, we couldn't find the page you were looking for.</p>
       <Link to="/" className={notFoundLink}>

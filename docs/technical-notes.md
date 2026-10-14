@@ -66,6 +66,18 @@ The app is deployed on [Vercel](https://vercel.com), which detects the Vite setu
 
 If you add a new external service (for example a different map tile provider), add its domain to the Content Security Policy in `vercel.json`, or the browser will block it.
 
+### Analytics
+
+[Vercel Web Analytics](https://vercel.com/docs/analytics) and [Speed Insights](https://vercel.com/docs/speed-insights) are added in `main.tsx` and switched on in the Vercel dashboard. Both are cookieless and are described in the privacy notice. On Vercel their scripts load from `/_vercel/...` on the site's own domain, so they don't need Content Security Policy entries. In development they only log to the console.
+
+### Search engines and link previews
+
+- **Site URL:** the production URL is `SITE_URL` in `src/constants/site.ts`. If the domain changes, also update `index.html`, `public/sitemap.xml`, `public/robots.txt` and the URL printed on `public/og-image.png`.
+- **Canonical link:** `index.html` sets it to the home page, and `useCanonicalUrl` updates it to the current route on every navigation.
+- **Link previews:** Open Graph and Twitter card tags in `index.html` use `public/og-image.png` (1200×630).
+- **Sitemap:** `public/sitemap.xml` lists every page and is linked from `robots.txt`. Add new routes to it.
+- **404s:** because every path serves `index.html`, unknown URLs return a 200 status. The Page not found page adds a `noindex` meta tag so search engines don't index them.
+
 ## Conventions
 
 - **Imports:** use the `@/` alias for anything outside the current folder (`@/hooks/useUserLocation`) and relative paths for files in the same folder (`./MapCard.css`).
