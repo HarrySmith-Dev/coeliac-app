@@ -1,6 +1,6 @@
 # Gluten Free & Me
 
-**Live site: [coeliac-app-pi.vercel.app](https://coeliac-app-pi.vercel.app)**
+**Live site: [glutenfreeandme.io](https://glutenfreeandme.io)**
 
 ![Gluten Free & Me showing the map of nearby gluten-free places and the FAQ](docs/screenshot.png)
 

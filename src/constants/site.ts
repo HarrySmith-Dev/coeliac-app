@@ -1,6 +1,6 @@
 export const SITE_NAME = 'Gluten Free & Me'
 
-export const SITE_URL = 'https://coeliac-app-pi.vercel.app'
+export const SITE_URL = 'https://glutenfreeandme.io'
 
 export const SITE_OWNER = 'Harry Smith'
 

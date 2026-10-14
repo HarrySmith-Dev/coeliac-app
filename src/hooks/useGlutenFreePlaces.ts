@@ -10,6 +10,9 @@ export const isRetryable = (error: Error) =>
   error.status === 429 ||
   error.status >= 500
 
+export const isBlocked = (error: Error | null) =>
+  error instanceof OverpassError && (error.status === 403 || error.status === 406)
+
 export const useGlutenFreePlaces = () => {
   const { searchCentre } = useUserLocation()
   const searchLocation = searchCentre && roundCoordinates(searchCentre)
