@@ -11,7 +11,13 @@ export const privacyPoints: PrivacyPoint[] = [
     id: 'no-tracking',
     title: 'What we collect',
     description:
-      "We don't collect any personal information. There are no accounts, no analytics and no tracking cookies.",
+      "We don't collect any personal information. There are no accounts and no cookies, and we don't track you across other websites.",
+  },
+  {
+    id: 'analytics',
+    title: 'Visitor statistics',
+    description:
+      'We use Vercel Web Analytics to count page views and see which pages are popular. It does not use cookies, and it does not identify you or follow you between visits or across other websites. It records the page visited, the referring website, and your country, browser, operating system and device type.',
   },
   {
     id: 'location',
