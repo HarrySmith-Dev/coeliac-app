@@ -17,7 +17,9 @@ import {
   SEARCH_RADIUS_METRES,
   TILE_KEEP_BUFFER,
 } from '@/constants/map'
+import { PLACES_SLOW_SEARCH_DELAY } from '@/constants/places'
 import { isBlocked, useGlutenFreePlaces } from '@/hooks/useGlutenFreePlaces'
+import { useIsSlow } from '@/hooks/useIsSlow'
 import {
   mapCardContainer,
   mapCardHeader,
@@ -55,7 +57,8 @@ export type MapCardProps = {
 
 const MapCard = ({ fullPage = false }: MapCardProps) => {
   const { userLocation, searchCentre, mapFocus, locationError } = useUserLocation()
-  const { data: places, error, isFetching, isError, refetch } = useGlutenFreePlaces()
+  const { data: places, error, failureCount, isFetching, isError, refetch } = useGlutenFreePlaces()
+  const isSlowSearch = useIsSlow(isFetching, PLACES_SLOW_SEARCH_DELAY)
   const [map, setMap] = useState<LeafletMap | null>(null)
   const markers = useRef(new Map<string, LeafletCircleMarker>())
   const [isListOpen, setIsListOpen] = useState(false)
@@ -75,6 +78,12 @@ const MapCard = ({ fullPage = false }: MapCardProps) => {
     }
     if (!searchCentre) {
       return 'Share your location or search an area of the map'
+    }
+    if (isFetching && failureCount > 0) {
+      return 'The place search service is busy, trying again...'
+    }
+    if (isSlowSearch) {
+      return 'Still searching. Places come from a free public service that can be slow at busy times.'
     }
     if (isFetching) {
       return 'Searching for gluten-free spots...'
