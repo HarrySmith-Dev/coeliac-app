@@ -36,6 +36,7 @@ export const statPillHeader = style({
 })
 
 export const statPillText = style({
+  flexGrow: 1,
   fontSize: '12px',
   margin: '0',
 })

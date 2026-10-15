@@ -10,3 +10,5 @@ export const GLUTEN_FREE_LABELS = {
   only: 'Dedicated gluten-free',
   yes: 'Gluten-free options',
 }
+
+export const PLACES_SLOW_SEARCH_DELAY = 5 * 1000
