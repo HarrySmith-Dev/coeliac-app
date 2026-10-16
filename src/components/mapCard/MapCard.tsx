@@ -18,7 +18,7 @@ import {
   TILE_KEEP_BUFFER,
 } from '@/constants/map'
 import { PLACES_SLOW_SEARCH_DELAY } from '@/constants/places'
-import { isBlocked, isBusy, useGlutenFreePlaces } from '@/hooks/useGlutenFreePlaces'
+import { useGlutenFreePlaces } from '@/hooks/useGlutenFreePlaces'
 import { useIsSlow } from '@/hooks/useIsSlow'
 import {
   mapCardContainer,
@@ -30,11 +30,10 @@ import {
   mapCardRetry,
 } from './MapCard.css'
 import MapDataNotice from './MapDataNotice'
+import { getMapStatus } from './mapStatus'
 import PlaceList from './PlaceList'
 import PlaceMarker from './PlaceMarker'
 import SearchAreaControl from './SearchAreaControl'
-
-const searchRadiusLabel = `${SEARCH_RADIUS_METRES / 1000} km`
 
 const MapFocusUpdater = ({ focus }: { focus: MapFocus | null }) => {
   const map = useMap()
@@ -57,7 +56,7 @@ export type MapCardProps = {
 
 const MapCard = ({ fullPage = false }: MapCardProps) => {
   const { userLocation, searchCentre, mapFocus, locationError } = useUserLocation()
-  const { data: places, error, failureCount, isFetching, isError, refetch } = useGlutenFreePlaces()
+  const { data: places, error, failureCount, isFetching, refetch } = useGlutenFreePlaces()
   const isSlowSearch = useIsSlow(isFetching, PLACES_SLOW_SEARCH_DELAY)
   const [map, setMap] = useState<LeafletMap | null>(null)
   const markers = useRef(new Map<string, LeafletCircleMarker>())
@@ -72,48 +71,29 @@ const MapCard = ({ fullPage = false }: MapCardProps) => {
     markers.current.get(placeId)?.openPopup()
   }
 
-  const renderStatus = () => {
-    if (locationError) {
-      return locationError
-    }
-    if (!searchCentre) {
-      return 'Share your location or search an area of the map'
-    }
-    if (isFetching && failureCount > 0) {
-      return 'The place search service is busy, trying again...'
-    }
-    if (isSlowSearch) {
-      return 'Still searching. Places come from a free public service that can be slow at busy times.'
-    }
-    if (isFetching) {
-      return 'Searching for gluten-free spots...'
-    }
-    if (isBlocked(error)) {
-      return 'The place search service is unavailable right now. Please try again later.'
-    }
-    if (isError) {
-      return (
-        <>
-          {isBusy(error)
-            ? 'The place search service is busy right now. Please try again in a minute.'
-            : "Couldn't load gluten-free spots."}{' '}
-          <button type="button" className={mapCardRetry} onClick={() => refetch()}>
-            Try again
-          </button>
-        </>
-      )
-    }
-    if (places?.length === 0) {
-      return `No gluten-free spots found within ${searchRadiusLabel}`
-    }
-    return `${places?.length} gluten-free spot${places?.length === 1 ? '' : 's'} within ${searchRadiusLabel}`
-  }
+  const status = getMapStatus({
+    locationError,
+    hasSearchCentre: Boolean(searchCentre),
+    isFetching,
+    failureCount,
+    isSlowSearch,
+    error,
+    placeCount: places?.length,
+  })
 
   return (
     <article className={`${cardContainer} ${mapCardContainer}`}>
       <div className={mapCardHeader}>
         <p className={smallMutedText} aria-live="polite">
-          {renderStatus()}
+          {status.message}
+          {status.canRetry && (
+            <>
+              {' '}
+              <button type="button" className={mapCardRetry} onClick={() => refetch()}>
+                Try again
+              </button>
+            </>
+          )}
         </p>
         <div className={mapCardActions}>
           {hasPlaces && (
