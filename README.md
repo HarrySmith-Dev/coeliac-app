@@ -30,6 +30,7 @@ More detail is in [docs/technical-notes.md](docs/technical-notes.md).
 - [Leaflet](https://leafletjs.com) + [react-leaflet](https://react-leaflet.js.org) for the map, with OpenStreetMap tiles
 - [TanStack Query](https://tanstack.com/query) for fetching, caching and persisting place data
 - [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API) for querying OpenStreetMap
+- [Vitest](https://vitest.dev) for unit tests, and [Playwright](https://playwright.dev) with [axe](https://github.com/dequelabs/axe-core) for end-to-end and accessibility tests
 - Hosted on [Vercel](https://vercel.com)
 
 ## Running it locally
@@ -41,13 +42,26 @@ yarn install
 yarn dev
 ```
 
+To run the tests:
+
+```bash
+yarn test                         # unit tests
+yarn playwright install chromium  # first time only
+yarn test:e2e                     # end-to-end tests
+```
+
 In development, the app pretends you're in central London so there are always places on the map. The full list of commands is in the [technical notes](docs/technical-notes.md#commands).
 
 ## Project structure
 
 ```
+.github/          CI workflow and Dependabot config
+docs/             Technical notes
+e2e/              Playwright end-to-end tests and mocks
+public/           Static files served as-is (icons, link preview image, sitemap)
 src/
 ├── api/          Calls to external services (Overpass API)
+├── assets/       SVG icons
 ├── components/   Reusable UI components, one folder each with its styles
 ├── constants/    Shared fixed values (search radius, zoom levels, cache times)
 ├── context/      Location and search area state
@@ -59,6 +73,8 @@ src/
 ├── types/        Shared TypeScript types
 └── utils/        Small helper functions with no React dependencies
 ```
+
+Unit tests sit next to the code they test, as `*.test.ts` files.
 
 ## Data and attribution
 
