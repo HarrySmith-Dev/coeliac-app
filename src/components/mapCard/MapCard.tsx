@@ -18,7 +18,7 @@ import {
   TILE_KEEP_BUFFER,
 } from '@/constants/map'
 import { PLACES_SLOW_SEARCH_DELAY } from '@/constants/places'
-import { isBlocked, useGlutenFreePlaces } from '@/hooks/useGlutenFreePlaces'
+import { isBlocked, isBusy, useGlutenFreePlaces } from '@/hooks/useGlutenFreePlaces'
 import { useIsSlow } from '@/hooks/useIsSlow'
 import {
   mapCardContainer,
@@ -94,7 +94,9 @@ const MapCard = ({ fullPage = false }: MapCardProps) => {
     if (isError) {
       return (
         <>
-          Couldn't load gluten-free spots.{' '}
+          {isBusy(error)
+            ? 'The place search service is busy right now. Please try again in a minute.'
+            : "Couldn't load gluten-free spots."}{' '}
           <button type="button" className={mapCardRetry} onClick={() => refetch()}>
             Try again
           </button>

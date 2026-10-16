@@ -6,9 +6,11 @@ More detail on how the app works, for anyone reading or changing the code.
 
 Places come from the public [Overpass API](https://overpass-api.de), which searches OpenStreetMap for restaurants, cafes and fast food places tagged `diet:gluten_free=yes` or `only`. The public server is free but rate-limited and sometimes overloaded, so the app:
 
-- keeps the search radius small (1 km) and only searches when the user asks (Near Me or Search this area)
-- tells Overpass to stop after 15 seconds, and gives up on the client after 20 seconds if there's no response at all
-- retries network errors, rate limits (429) and server errors (5xx) up to 3 times with a growing delay, but not bad requests
+- keeps the search radius small (1 km) and only searches when the user asks (Near Me or Search this area), or on load if they've already given the site location permission
+- tells Overpass to stop after 15 seconds, and gives up on each request after 20 seconds if there's no response at all
+- retries network errors, timeouts, rate limits (429) and server errors (5xx) up to 2 more times, waiting 5 seconds and then 15 seconds so a busy server has time to clear its queue, but doesn't retry bad requests (4xx)
+- shows a "still searching" message if a search takes longer than 5 seconds
+- tells the user the service is busy and to try again in a minute if it's still overloaded (429, 502, 503 or 504) after the retries, and that it's unavailable if Overpass blocks the request (403 or 406)
 - treats Overpass's "timed out" responses (a 200 with a `remark`) as failures, so partial results are never shown
 - rounds the search location to about 100 m so nearby searches share a cache entry
 - caches results for 24 hours and persists them to `localStorage`, so a page refresh doesn't fetch again
@@ -29,7 +31,7 @@ If traffic grows, switch to a tile provider with an API key and a monthly quota 
 
 `LocationProvider` keeps two separate locations:
 
-- **User location:** where the user is, shown as the blue dot. Only requested when the user clicks Near Me, or read silently on load if they've already granted permission.
+- **User location:** where the user is, shown as the blue dot. Only requested when the user clicks Near Me (**Find gluten-free spots near me**), or read silently on load if they've already granted permission.
 - **Search centre:** the area being searched. Set by Near Me or by Search this area, and saved to `sessionStorage` so a refresh reopens the same area.
 
 Moving the map to the user is an explicit "focus" request rather than a side effect of the location changing, so clicking Near Me always re-centres the map, even if the position hasn't changed.
@@ -47,7 +49,7 @@ In development, the app pretends the user is in central London so there are alwa
 
 ## Performance
 
-- **Lazy-loaded map.** `LazyMapCard` loads `MapCard` with `React.lazy` and a dynamic `import()`, so Vite splits the map card, Leaflet and Leaflet's CSS into a separate file. Pages without a map (About, Privacy, Sources) never download it, which cuts their JavaScript from 144 KB to 96 KB (gzipped).
+- **Lazy-loaded map.** `LazyMapCard` loads `MapCard` with `React.lazy` and a dynamic `import()`, so Vite splits the map card, Leaflet and Leaflet's CSS into a separate file. Pages without a map (About, Privacy, Sources) never download it, which cuts their JavaScript from about 153 KB to 102 KB (gzipped).
 - **No layout shift while the map loads.** The `Suspense` fallback is a placeholder built from the same styles as the real map card, so the page doesn't move when the map arrives.
 - **No background preloading.** Downloading the map file in the background after page load was tested and made content pages slower in Lighthouse's simulated mobile test, so the map is only downloaded when a page needs it. The trade-off is a brief "Loading map..." placeholder the first time someone opens a page with a map.
 - **Fonts.** Inter and Fraunces are self-hosted (Latin characters only), and the three fonts visible on first load are preloaded in `index.html` so text doesn't reflow when they arrive.
