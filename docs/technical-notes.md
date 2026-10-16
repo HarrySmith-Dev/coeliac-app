@@ -86,6 +86,42 @@ If you add a new external service (for example a different map tile provider), a
 - **Styles:** each component has a `.css.ts` file next to it. Use the colours and fonts from `src/styles/tokens.ts`, and the shared heading, text, link and button styles in `src/styles/shared.css.ts`, rather than hard-coding values.
 - **Content:** page text, FAQs, statistics and the privacy notice live in `src/data`. Every FAQ and statistic must have a source from `src/data/sources.ts`, and `contentLastReviewed` in `src/data/coeliacContent.ts` should be updated whenever the content is re-checked.
 
+## Testing and CI
+
+There are two kinds of tests:
+
+- **Unit tests** use [Vitest](https://vitest.dev) and sit next to the code they test (`overpass.test.ts` next to `overpass.ts`). They cover the logic most likely to break, which is the code handling the unreliable API and the community-edited data:
+  - **Overpass client:** the query sent, turning nodes and ways into places, building addresses, skipping places with no name or position, and turning failed requests, timeouts and `remark` responses into errors
+  - **Retry rules:** which errors are retried, treated as blocked or treated as busy, and how long to wait between retries
+  - **Map status:** which message the map shows for each combination of location, loading, error and result states (`mapStatus.ts`)
+  - **Helpers:** cleaning website links, rounding coordinates and formatting distances
+- **End-to-end tests** use [Playwright](https://playwright.dev) and live in `e2e/`. They build the app, serve the production build and drive it in Chromium, at desktop size and as a mobile phone. They cover:
+  - every page loading with the right title and `h1`, with no WCAG 2.2 AA problems found by [axe](https://github.com/dequelabs/axe-core)
+  - Near Me finding places, the list view sorting them nearest first, and Show on map opening the right popup
+  - searching automatically on load when location was already allowed
+  - Search this area working without sharing a location, including after dragging the map
+  - the busy and blocked messages, and Try again
+  - the message shown when location access is denied
+  - the skip link
+
+The end-to-end tests never call the real Overpass API or OpenStreetMap tile servers. `e2e/fixtures.ts` replaces Overpass with fixed places near central London and tiles with a blank image, so the tests are reliable and don't use up the free services. The busy test uses Playwright's fake clock to skip the retry delays instead of waiting 20 seconds.
+
+There are no component tests. Most components either just render content, or render Leaflet, which needs a real browser and is covered by the end-to-end tests instead.
+
+[GitHub Actions](../.github/workflows/ci.yml) runs on every pull request and every push to `master`, with two jobs that run side by side. Both install dependencies from the lockfile using the Node version in `.nvmrc`:
+
+- **Format, lint, test and build:** checks formatting, lints, runs the unit tests and does a type-checked build.
+- **End-to-end tests:** installs Chromium and runs the Playwright tests. If they fail, the HTML report (with a trace of each failed test) is uploaded to the run for 7 days.
+
+A new push cancels any run still going on the same branch.
+
+[Dependabot](../.github/dependabot.yml) checks for updates every Monday:
+
+- **npm packages:** minor and patch updates are grouped into one pull request for production dependencies and one for development dependencies. Major updates come as separate pull requests.
+- **Cooldown:** a new release is only suggested once it's a few days old (3 days for patches, 7 for minor and 14 for major), so a broken or compromised release is likely to be caught before it's picked up.
+- **`@types/node`:** major updates are ignored so the types stay on Node 24, matching `.nvmrc`.
+- **GitHub Actions:** the actions used in CI are updated in one grouped pull request.
+
 ## Commands
 
 | Command             | What it does                                     |
@@ -94,7 +130,10 @@ If you add a new external service (for example a different map tile provider), a
 | `yarn build`        | Type-check and build for production into `dist/` |
 | `yarn preview`      | Serve the production build locally               |
 | `yarn lint`         | Run ESLint                                       |
-| `yarn test`         | Run the tests once                               |
-| `yarn test:watch`   | Run the tests and re-run them on changes         |
+| `yarn test`         | Run the unit tests once                          |
+| `yarn test:watch`   | Run the unit tests and re-run them on changes    |
+| `yarn test:e2e`     | Build the app and run the end-to-end tests       |
 | `yarn format`       | Format all files with Prettier                   |
 | `yarn format:check` | Check formatting without changing files          |
+
+Before running `yarn test:e2e` for the first time, download the browser with `yarn playwright install chromium`.
