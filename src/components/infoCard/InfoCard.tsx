@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react'
-import { cardContainer } from '@/styles/shared.css'
+import ExternalLink from '@/components/externalLink/ExternalLink'
+import { cardContainer, inlineLink, smallMutedText } from '@/styles/shared.css'
+import type { Source } from '@/types/content'
 import {
   infoCardContainer,
   infoCardHeader,
@@ -13,6 +15,7 @@ type InfoCardProps = {
   title?: string
   description?: string
   listItems?: string[]
+  source?: Source
   variant?: keyof typeof infoCardVariant
   children?: ReactNode
 }
@@ -21,6 +24,7 @@ const InfoCard = ({
   title,
   description,
   listItems,
+  source,
   variant = 'outlined',
   children,
 }: InfoCardProps) => {
@@ -36,6 +40,14 @@ const InfoCard = ({
             </li>
           ))}
         </ul>
+      )}
+      {source && (
+        <p className={smallMutedText}>
+          Source:{' '}
+          <ExternalLink href={source.url} className={inlineLink}>
+            {source.publisher}: {source.title}
+          </ExternalLink>
+        </p>
       )}
       {children}
     </article>

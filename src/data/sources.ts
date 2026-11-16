@@ -6,6 +6,11 @@ export const sources = {
     title: 'Coeliac disease',
     url: 'https://www.nhs.uk/conditions/coeliac-disease/',
   },
+  nhsSymptoms: {
+    publisher: 'NHS',
+    title: 'Coeliac disease: symptoms',
+    url: 'https://www.nhs.uk/conditions/coeliac-disease/symptoms/',
+  },
   nhsDiagnosis: {
     publisher: 'NHS',
     title: 'Coeliac disease: diagnosis',
@@ -35,6 +40,11 @@ export const sources = {
     publisher: 'Coeliac UK',
     title: 'Common myths about coeliac disease',
     url: 'https://www.coeliac.org.uk/about-coeliac-disease/common-myths/',
+  },
+  coeliacUkGlutenFreeDiet: {
+    publisher: 'Coeliac UK',
+    title: 'The gluten free diet',
+    url: 'https://www.coeliac.org.uk/living-with-coeliac-disease/food-and-drink/the-gluten-free-diet/',
   },
   coeliacUkOats: {
     publisher: 'Coeliac UK',
