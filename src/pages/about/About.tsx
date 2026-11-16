@@ -1,7 +1,15 @@
 import FaqSection from '@/components/faqSection/FaqSection'
 import InfoCard from '@/components/infoCard/InfoCard'
 import OverviewStats from '@/components/overviewStats/OverviewStats'
-import { aboutOverviewDescription, aboutOverviewStats, faqs, symptoms } from '@/data/coeliacContent'
+import {
+  aboutOverviewDescription,
+  aboutOverviewStats,
+  faqs,
+  ownerStory,
+  symptoms,
+  symptomsDescription,
+  symptomsSource,
+} from '@/data/coeliacContent'
 import { pageLayout, rowContainer, sectionDivider, visuallyHidden } from '@/styles/shared.css'
 import { usePageTitle } from '@/hooks/usePageTitle'
 
@@ -15,11 +23,19 @@ const About = () => {
         <InfoCard variant="plain" description={aboutOverviewDescription}>
           <OverviewStats stats={aboutOverviewStats} />
         </InfoCard>
-        <InfoCard title="Common Symptoms" listItems={symptoms} />
+        <InfoCard
+          title="Common symptoms"
+          description={symptomsDescription}
+          listItems={symptoms}
+          source={symptomsSource}
+        />
       </div>
 
       <hr className={sectionDivider} />
       <FaqSection id="faq" faqs={faqs} />
+
+      <hr className={sectionDivider} />
+      <InfoCard title="Why I built this" description={ownerStory} />
     </section>
   )
 }

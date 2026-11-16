@@ -1,4 +1,5 @@
 import type { StatPillData } from '@/components/overviewStats/OverviewStats'
+import { SITE_NAME } from '@/constants/site'
 import type { Faq } from '@/types/content'
 import { sources } from './sources'
 
@@ -42,12 +43,20 @@ export const aboutOverviewStats: StatPillData[] = [
   },
 ]
 
+export const symptomsDescription =
+  'Symptoms can range from mild to severe and often come and go. Some people have no noticeable symptoms at all.'
+
 export const symptoms = [
   'Bloating and stomach aches',
   'Diarrhoea or constipation',
   'Tiredness',
   'Unintentional weight loss',
+  'An itchy rash (dermatitis herpetiformis)',
 ]
+
+export const symptomsSource = sources.nhsSymptoms
+
+export const ownerStory = `I've had coeliac disease for 15 years, since I was 10, so I know how anxious eating out can feel, even after asking staff all the right questions. Over the years I've seen shops and restaurants get much better at catering for coeliacs, and I built ${SITE_NAME} to make those places easier to find.`
 
 export const faqs: Faq[] = [
   {
@@ -61,7 +70,7 @@ export const faqs: Faq[] = [
     id: 'diagnosis',
     title: 'How is coeliac disease diagnosed?',
     description:
-      'It usually starts with a blood test from your GP that looks for coeliac antibodies. If it is positive, you will be referred to a specialist, who may take a small sample (biopsy) of your gut lining. Some adults can now be diagnosed from the blood test alone. Keep eating gluten until testing is finished: at least 3g (about two slices of wheat bread) and preferably 6g every day for at least six weeks, or the results may be inaccurate.',
+      'It usually starts with a blood test from your GP that looks for coeliac antibodies. If it is positive, you will be referred to a specialist, who may take a small sample (biopsy) of your gut lining. Under 2026 guidelines, some adults can be diagnosed from the blood test alone if a gut specialist agrees it is suitable. Keep eating gluten until testing is finished: at least 3g (about 1.5 to 2 slices of wheat bread) and preferably 6g every day for at least six weeks, or the results may be inaccurate. If you have already cut out gluten, you will need to eat it again before testing, so speak to your GP about how to manage your symptoms.',
     sources: [sources.nhsDiagnosis, sources.coeliacUkDiagnosis],
   },
   {
@@ -69,7 +78,7 @@ export const faqs: Faq[] = [
     title: 'Which foods contain gluten?',
     description:
       'Gluten is found in wheat (including spelt), barley and rye. That means most bread, pasta, breakfast cereals, biscuits, cakes, pastries and pies contain it, as well as many gravies and sauces and most beers. Naturally gluten-free foods include most dairy products, fruit and vegetables, unbreaded meat and fish, potatoes and rice.',
-    sources: [sources.nhsTreatment],
+    sources: [sources.nhsTreatment, sources.nhsOverview],
   },
   {
     id: 'oats',
@@ -114,8 +123,8 @@ export const faqs: Faq[] = [
     id: 'accidental-gluten',
     title: 'What happens if I accidentally eat gluten?',
     description:
-      "Even a small amount can bring on symptoms such as stomach aches, bloating, diarrhoea and tiredness. Carry on with your gluten-free diet as normal, and speak to your GP if your symptoms are severe or don't settle. Regular exposure to gluten is what leads to long-term complications, so it's worth working out how it happened to avoid it in future.",
-    sources: [sources.nhsTreatment, sources.nhsComplications],
+      "Even a small amount of gluten can bring on very unpleasant gut symptoms. Eating gluten, even in tiny amounts, also increases the risk of long-term complications, so it's worth working out how it happened to avoid it in future. If your symptoms haven't improved or have got worse since starting a gluten-free diet, speak to your GP, dietitian or gastroenterologist.",
+    sources: [sources.nhsTreatment, sources.nhsComplications, sources.coeliacUkGlutenFreeDiet],
   },
   {
     id: 'family',
@@ -126,6 +135,6 @@ export const faqs: Faq[] = [
   },
 ]
 
-export const contentLastReviewed = '2 October 2026'
+export const contentLastReviewed = '16 November 2026'
 
 export const featuredFaqs = faqs.filter((faq) => faq.featured)

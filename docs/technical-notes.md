@@ -84,7 +84,7 @@ If you add a new external service (for example a different map tile provider), a
 
 - **Imports:** use the `@/` alias for anything outside the current folder (`@/hooks/useUserLocation`) and relative paths for files in the same folder (`./MapCard.css`).
 - **Styles:** each component has a `.css.ts` file next to it. Use the colours and fonts from `src/styles/tokens.ts`, and the shared heading, text, link and button styles in `src/styles/shared.css.ts`, rather than hard-coding values.
-- **Content:** page text, FAQs, statistics and the privacy notice live in `src/data`. Every FAQ and statistic must have a source from `src/data/sources.ts`, and `contentLastReviewed` in `src/data/coeliacContent.ts` should be updated whenever the content is re-checked.
+- **Content:** page text, FAQs, statistics and the privacy notice live in `src/data`. Every FAQ, statistic and the symptoms list must have a source from `src/data/sources.ts`, and `contentLastReviewed` in `src/data/coeliacContent.ts` should be updated whenever the content is re-checked.
 
 ## Testing and CI
 
